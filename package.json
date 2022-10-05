@@ -1,0 +1,16 @@
+{
+    "name": "com.tis.extreal.newcore",
+    "version": "0.1.0",
+    "displayName": "Extreal.NewCore",
+    "unity": "2020.3",
+    "author": {
+        "name": "TIS Inc."
+    },
+    "dependencies": {},
+    "samples": [
+        {
+            "displayName": "MinimalSample",
+            "path": "Samples~/MinimalSample"
+        }
+    ]
+}
