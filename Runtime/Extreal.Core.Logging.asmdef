@@ -1,0 +1,16 @@
+{
+    "name": "Extreal.Core.Logging",
+    "rootNamespace": "",
+    "references": [
+        "Extreal.Core.Logging.Analyzer"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

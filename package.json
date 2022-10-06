@@ -1,7 +1,7 @@
 {
-    "name": "com.tis.extreal.newcore",
+    "name": "jp.co.tis.extreal.core.logging",
     "version": "0.1.0",
-    "displayName": "Extreal.NewCore",
+    "displayName": "Extreal.Core.Logging",
     "unity": "2020.3",
     "author": {
         "name": "TIS Inc."
