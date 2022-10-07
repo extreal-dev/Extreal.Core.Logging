@@ -1,4 +1,4 @@
-namespace Extreal.Core.Logging
+﻿namespace Extreal.Core.Logging
 {
     public enum LogLevel
     {
