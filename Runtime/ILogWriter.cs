@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace Extreal.Core.Logging
 {
     public interface ILogWriter

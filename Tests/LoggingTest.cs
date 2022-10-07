@@ -48,14 +48,12 @@ public class LoggingTest
         logger.LogInfo(message, exception);
         LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] {message}\n----------\n{exception}");
 
-
         // Test to print warn
         message = "Warn";
         logger.LogWarn(message);
         LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}");
         logger.LogWarn(message, exception);
         LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}\n----------\n{exception}");
-
 
         // Test to print error
         message = "Error";
@@ -136,14 +134,12 @@ public class LoggingTest
         Assert.IsEmpty(_logText);
         _logText = "";
 
-
         // Test to print warn
         message = "Warn";
         logger.LogWarn(message);
         LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}");
         logger.LogWarn(message, exception);
         LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}\n----------\n{exception}");
-
 
         // Test to print error
         message = "Error";
@@ -181,7 +177,6 @@ public class LoggingTest
         Assert.IsEmpty(_logText);
         _logText = "";
 
-
         // Test to print warn
         message = "Warn";
         logger.LogWarn(message);
@@ -190,7 +185,6 @@ public class LoggingTest
         logger.LogWarn(message, exception);
         Assert.IsEmpty(_logText);
         _logText = "";
-
 
         // Test to print error
         message = "Error";

@@ -1,13 +1,14 @@
 ﻿using System;
+
 namespace Extreal.Core.Logging
 {
     public class Logger
     {
-        private ILogWriter _writer;
-        private ILogOutputChecker _checker;
-
         public string LogCategory { get; set; }
         public LogLevel LogLevel { get; set; }
+
+        private ILogWriter _writer;
+        private ILogOutputChecker _checker;
 
         public Logger(
             string logCategory,
