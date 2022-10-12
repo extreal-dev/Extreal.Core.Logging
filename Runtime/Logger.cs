@@ -4,87 +4,103 @@ namespace Extreal.Core.Logging
 {
     public class Logger
     {
-        public string LogCategory { get; set; }
-        public LogLevel LogLevel { get; set; }
-
-        private ILogWriter _writer;
-        private ILogOutputChecker _checker;
+        private readonly ILogWriter _writer;
+        private readonly ILogOutputChecker _checker;
+        private readonly string _logCategory;
 
         public Logger(
             string logCategory,
-            LogLevel logLevel,
             ILogWriter logWriter,
             ILogOutputChecker logOutputChecker
         )
         {
-            LogCategory = logCategory;
-            LogLevel = logLevel;
+            _logCategory = logCategory;
             _writer = logWriter;
             _checker = logOutputChecker;
         }
 
         public void LogDebug(string message)
         {
-            if (_checker.IsDebug(this))
+            if (_checker.IsDebug(_logCategory))
             {
-                _writer.LogDebug(this, message);
+                _writer.LogDebug(_logCategory, message);
             }
         }
 
         public void LogDebug(string message, Exception exception)
         {
-            if (_checker.IsDebug(this))
+            if (_checker.IsDebug(_logCategory))
             {
-                _writer.LogDebug(this, message, exception);
+                _writer.LogDebug(_logCategory, message, exception);
             }
         }
 
         public void LogInfo(string message)
         {
-            if (_checker.IsInfo(this))
+            if (_checker.IsInfo(_logCategory))
             {
-                _writer.LogInfo(this, message);
+                _writer.LogInfo(_logCategory, message);
             }
         }
 
         public void LogInfo(string message, Exception exception)
         {
-            if (_checker.IsInfo(this))
+            if (_checker.IsInfo(_logCategory))
             {
-                _writer.LogInfo(this, message, exception);
+                _writer.LogInfo(_logCategory, message, exception);
             }
         }
 
         public void LogWarn(string message)
         {
-            if (_checker.IsWarn(this))
+            if (_checker.IsWarn(_logCategory))
             {
-                _writer.LogWarn(this, message);
+                _writer.LogWarn(_logCategory, message);
             }
         }
 
         public void LogWarn(string message, Exception exception)
         {
-            if (_checker.IsWarn(this))
+            if (_checker.IsWarn(_logCategory))
             {
-                _writer.LogWarn(this, message, exception);
+                _writer.LogWarn(_logCategory, message, exception);
             }
         }
 
         public void LogError(string message)
         {
-            if (_checker.IsError(this))
+            if (_checker.IsError(_logCategory))
             {
-                _writer.LogError(this, message);
+                _writer.LogError(_logCategory, message);
             }
         }
 
         public void LogError(string message, Exception exception)
         {
-            if (_checker.IsError(this))
+            if (_checker.IsError(_logCategory))
             {
-                _writer.LogError(this, message, exception);
+                _writer.LogError(_logCategory, message, exception);
             }
+        }
+
+        public bool IsDebug()
+        {
+            return _checker.IsDebug(_logCategory);
+        }
+
+        public bool IsInfo()
+        {
+            return _checker.IsInfo(_logCategory);
+        }
+
+        public bool IsWarn()
+        {
+            return _checker.IsWarn(_logCategory);
+        }
+
+        public bool IsError()
+        {
+            return _checker.IsError(_logCategory);
         }
     }
 }

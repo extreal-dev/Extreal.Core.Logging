@@ -2,9 +2,10 @@
 {
     public interface ILogOutputChecker
     {
-        bool IsDebug(Logger logger);
-        bool IsInfo(Logger logger);
-        bool IsWarn(Logger logger);
-        bool IsError(Logger logger);
+        void SetLogLevel(LogLevel logLevel);
+        bool IsDebug(string logCategory);
+        bool IsInfo(string logCategory);
+        bool IsWarn(string logCategory);
+        bool IsError(string logCategory);
     }
 }

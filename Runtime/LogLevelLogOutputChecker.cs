@@ -2,24 +2,37 @@
 {
     public class LogLevelLogOutputChecker : ILogOutputChecker
     {
-        bool ILogOutputChecker.IsDebug(Logger logger)
+        private bool _isDebug;
+        private bool _isInfo = true;
+        private bool _isWarn = true;
+        private bool _isError = true;
+
+        public void SetLogLevel(LogLevel logLevel)
         {
-            return logger.LogLevel <= LogLevel.Debug;
+            _isDebug = logLevel <= LogLevel.DEBUG;
+            _isInfo = logLevel <= LogLevel.INFO;
+            _isWarn = logLevel <= LogLevel.WARN;
+            _isError = logLevel <= LogLevel.ERROR;
         }
 
-        bool ILogOutputChecker.IsInfo(Logger logger)
+        public bool IsDebug(string logCategory)
         {
-            return logger.LogLevel <= LogLevel.Info;
+            return _isDebug;
         }
 
-        bool ILogOutputChecker.IsWarn(Logger logger)
+        public bool IsInfo(string logCategory)
         {
-            return logger.LogLevel <= LogLevel.Warn;
+            return _isInfo;
         }
 
-        bool ILogOutputChecker.IsError(Logger logger)
+        public bool IsWarn(string logCategory)
         {
-            return logger.LogLevel <= LogLevel.Error;
+            return _isWarn;
+        }
+
+        public bool IsError(string logCategory)
+        {
+            return _isError;
         }
     }
 }

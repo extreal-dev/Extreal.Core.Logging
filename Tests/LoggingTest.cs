@@ -30,37 +30,37 @@ public class LoggingTest
     [Test]
     public void LogMoreThanDebugLevel()
     {
-        LoggerManager.SetLogLevel(LogLevel.Debug);
-        var logger = LoggerManager.Create(LOG_CATEGORY);
+        LoggingManager.SetLogLevel(LogLevel.DEBUG);
+        var logger = LoggingManager.GetLogger(LOG_CATEGORY);
         var exception = new Exception();
 
         // Test to print debug
         var message = "Debug";
         logger.LogDebug(message);
-        LogAssert.Expect(LogType.Log, $"[{LogLevel.Debug}:{LOG_CATEGORY}] {message}");
+        LogAssert.Expect(LogType.Log, $"[{LogLevel.DEBUG}:{LOG_CATEGORY}] {message}");
         logger.LogDebug(message, exception);
-        LogAssert.Expect(LogType.Log, $"[{LogLevel.Debug}:{LOG_CATEGORY}] {message}\n----------\n{exception}");
+        LogAssert.Expect(LogType.Log, $"[{LogLevel.DEBUG}:{LOG_CATEGORY}] {message}\n----------\n{exception}");
 
         // Test to print info
         message = "Info";
         logger.LogInfo(message);
-        LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] {message}");
+        LogAssert.Expect(LogType.Log, $"[{LogLevel.INFO}:{LOG_CATEGORY}] {message}");
         logger.LogInfo(message, exception);
-        LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] {message}\n----------\n{exception}");
+        LogAssert.Expect(LogType.Log, $"[{LogLevel.INFO}:{LOG_CATEGORY}] {message}\n----------\n{exception}");
 
         // Test to print warn
         message = "Warn";
         logger.LogWarn(message);
-        LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}");
+        LogAssert.Expect(LogType.Warning, $"[{LogLevel.WARN}:{LOG_CATEGORY}] {message}");
         logger.LogWarn(message, exception);
-        LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}\n----------\n{exception}");
+        LogAssert.Expect(LogType.Warning, $"[{LogLevel.WARN}:{LOG_CATEGORY}] {message}\n----------\n{exception}");
 
         // Test to print error
         message = "Error";
         logger.LogError(message);
-        LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}");
+        LogAssert.Expect(LogType.Error, $"[{LogLevel.ERROR}:{LOG_CATEGORY}] {message}");
         logger.LogError(message, exception);
-        LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}\n----------\n{exception}");
+        LogAssert.Expect(LogType.Error, $"[{LogLevel.ERROR}:{LOG_CATEGORY}] {message}\n----------\n{exception}");
     }
 
     /// <summary>
@@ -69,8 +69,8 @@ public class LoggingTest
     [Test]
     public void LogMoreThanInfoLevel()
     {
-        LoggerManager.SetLogLevel(LogLevel.Info);
-        var logger = LoggerManager.Create(LOG_CATEGORY);
+        LoggingManager.SetLogLevel(LogLevel.INFO);
+        var logger = LoggingManager.GetLogger(LOG_CATEGORY);
         var exception = new Exception();
 
         // Test to print debug
@@ -85,23 +85,23 @@ public class LoggingTest
         // Test to print info
         message = "Info";
         logger.LogInfo(message);
-        LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] {message}");
+        LogAssert.Expect(LogType.Log, $"[{LogLevel.INFO}:{LOG_CATEGORY}] {message}");
         logger.LogInfo(message, exception);
-        LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] {message}\n----------\n{exception}");
+        LogAssert.Expect(LogType.Log, $"[{LogLevel.INFO}:{LOG_CATEGORY}] {message}\n----------\n{exception}");
 
         // Test to print warn
         message = "Warn";
         logger.LogWarn(message);
-        LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}");
+        LogAssert.Expect(LogType.Warning, $"[{LogLevel.WARN}:{LOG_CATEGORY}] {message}");
         logger.LogWarn(message, exception);
-        LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}\n----------\n{exception}");
+        LogAssert.Expect(LogType.Warning, $"[{LogLevel.WARN}:{LOG_CATEGORY}] {message}\n----------\n{exception}");
 
         // Test to print error
         message = "Error";
         logger.LogError(message);
-        LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}");
+        LogAssert.Expect(LogType.Error, $"[{LogLevel.ERROR}:{LOG_CATEGORY}] {message}");
         logger.LogError(message, exception);
-        LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}\n----------\n{exception}");
+        LogAssert.Expect(LogType.Error, $"[{LogLevel.ERROR}:{LOG_CATEGORY}] {message}\n----------\n{exception}");
     }
 
     /// <summary>
@@ -110,8 +110,8 @@ public class LoggingTest
     [Test]
     public void LogMoreThanWarnLevel()
     {
-        LoggerManager.SetLogLevel(LogLevel.Warn);
-        var logger = LoggerManager.Create(LOG_CATEGORY);
+        LoggingManager.SetLogLevel(LogLevel.WARN);
+        var logger = LoggingManager.GetLogger(LOG_CATEGORY);
         var exception = new Exception();
 
         // Test to print debug
@@ -135,16 +135,16 @@ public class LoggingTest
         // Test to print warn
         message = "Warn";
         logger.LogWarn(message);
-        LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}");
+        LogAssert.Expect(LogType.Warning, $"[{LogLevel.WARN}:{LOG_CATEGORY}] {message}");
         logger.LogWarn(message, exception);
-        LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}\n----------\n{exception}");
+        LogAssert.Expect(LogType.Warning, $"[{LogLevel.WARN}:{LOG_CATEGORY}] {message}\n----------\n{exception}");
 
         // Test to print error
         message = "Error";
         logger.LogError(message);
-        LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}");
+        LogAssert.Expect(LogType.Error, $"[{LogLevel.ERROR}:{LOG_CATEGORY}] {message}");
         logger.LogError(message, exception);
-        LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}\n----------\n{exception}");
+        LogAssert.Expect(LogType.Error, $"[{LogLevel.ERROR}:{LOG_CATEGORY}] {message}\n----------\n{exception}");
     }
 
     /// <summary>
@@ -153,8 +153,8 @@ public class LoggingTest
     [Test]
     public void LogMoreThanErrorLevel()
     {
-        LoggerManager.SetLogLevel(LogLevel.Error);
-        var logger = LoggerManager.Create(LOG_CATEGORY);
+        LoggingManager.SetLogLevel(LogLevel.ERROR);
+        var logger = LoggingManager.GetLogger(LOG_CATEGORY);
         var exception = new Exception();
 
         // Test to print debug
@@ -187,19 +187,19 @@ public class LoggingTest
         // Test to print error
         message = "Error";
         logger.LogError(message);
-        LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}");
+        LogAssert.Expect(LogType.Error, $"[{LogLevel.ERROR}:{LOG_CATEGORY}] {message}");
         logger.LogError(message, exception);
-        LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}\n----------\n{exception}");
+        LogAssert.Expect(LogType.Error, $"[{LogLevel.ERROR}:{LOG_CATEGORY}] {message}\n----------\n{exception}");
     }
 
     /// <summary>
-    /// Test if 10,000 log outputs are executed within 5,000 milliseconds
+    /// Test if 10,000 log outputs are executed within 3,000 milliseconds
     /// </summary>
     [Test]
-    public void Log10kTimesWithin5000MilliSec()
+    public void Log10kTimesWithin3000MilliSec()
     {
-        LoggerManager.SetLogLevel(LogLevel.Debug);
-        var logger = LoggerManager.Create(LOG_CATEGORY);
+        LoggingManager.SetLogLevel(LogLevel.DEBUG);
+        var logger = LoggingManager.GetLogger(LOG_CATEGORY);
 
         // Start timer
         var timer = new Stopwatch();
@@ -214,8 +214,8 @@ public class LoggingTest
         // Stop timer
         timer.Stop();
 
-        // Assert execution time within 5000 milliseconds
-        Assert.Less(timer.ElapsedMilliseconds, 5000);
+        // Assert execution time within 3,000 milliseconds
+        Assert.Less(timer.ElapsedMilliseconds, 3_000);
     }
 
     private void OnLogMessageReceived(string logText, string stackTrace, LogType logType)

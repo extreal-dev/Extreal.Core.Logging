@@ -1,6 +1,6 @@
 {
     "name": "Extreal.Core.Logging",
-    "rootNamespace": "",
+    "rootNamespace": "Extreal.Core.Logging",
     "references": [
         "Extreal.Core.Logging.Analyzer"
     ],
