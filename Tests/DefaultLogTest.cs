@@ -38,6 +38,7 @@ namespace Extreal.Core.Logging.Test
             Assert.IsEmpty(LogGetter.LogText);
             logger.LogDebug(message, _exception);
             Assert.IsEmpty(LogGetter.LogText);
+            Assert.IsFalse(logger.IsDebug());
 
             // Test to print info
             message = "Info";
@@ -45,6 +46,7 @@ namespace Extreal.Core.Logging.Test
             LogAssert.Expect(LogType.Log, $"[{LogLevel.INFO}:{LOG_CATEGORY}] {message}");
             logger.LogInfo(message, _exception);
             LogAssert.Expect(LogType.Log, $"[{LogLevel.INFO}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
+            Assert.IsTrue(logger.IsInfo());
 
             // Test to print warn
             message = "Warn";
@@ -52,6 +54,7 @@ namespace Extreal.Core.Logging.Test
             LogAssert.Expect(LogType.Warning, $"[{LogLevel.WARN}:{LOG_CATEGORY}] {message}");
             logger.LogWarn(message, _exception);
             LogAssert.Expect(LogType.Warning, $"[{LogLevel.WARN}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
+            Assert.IsTrue(logger.IsWarn());
 
             // Test to print error
             message = "Error";
@@ -59,6 +62,7 @@ namespace Extreal.Core.Logging.Test
             LogAssert.Expect(LogType.Error, $"[{LogLevel.ERROR}:{LOG_CATEGORY}] {message}");
             logger.LogError(message, _exception);
             LogAssert.Expect(LogType.Error, $"[{LogLevel.ERROR}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
+            Assert.IsTrue(logger.IsError());
         }
     }
 }
