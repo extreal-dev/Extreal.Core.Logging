@@ -2,7 +2,7 @@
 {
     public class LogLevelLogOutputChecker : ILogOutputChecker
     {
-        private bool _isDebug;
+        private bool _isDebug = false;
         private bool _isInfo = true;
         private bool _isWarn = true;
         private bool _isError = true;
