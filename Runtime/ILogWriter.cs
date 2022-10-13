@@ -4,6 +4,7 @@ namespace Extreal.Core.Logging
 {
     public interface ILogWriter
     {
+        ILogWriter Clone();
         void LogDebug(string logCategory, string message);
         void LogDebug(string logCategory, string message, Exception exception);
         void LogInfo(string logCategory, string message);

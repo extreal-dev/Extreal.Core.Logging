@@ -60,10 +60,27 @@ namespace Extreal.Core.Logging.Test
         // Customized LogOutputChecker class
         private class TestLogOutputChecker : ILogOutputChecker
         {
+            private LogLevel _logLevel;
             private bool _isDebug;
             private bool _isInfo;
             private bool _isWarn;
             private bool _isError;
+
+            public ILogOutputChecker Clone()
+            {
+                var checkerClone = new TestLogOutputChecker();
+                checkerClone.SetLogLevel(_logLevel);
+                return checkerClone;
+            }
+
+            public void SetLogLevel(LogLevel logLevel)
+            {
+                _logLevel = logLevel;
+                _isDebug = logLevel <= LogLevel.DEBUG;
+                _isInfo = logLevel <= LogLevel.INFO;
+                _isWarn = logLevel <= LogLevel.WARN;
+                _isError = logLevel <= LogLevel.ERROR;
+            }
 
             public bool IsDebug(string logCategory)
             {
@@ -83,14 +100,6 @@ namespace Extreal.Core.Logging.Test
             public bool IsError(string logCategory)
             {
                 return _isError;
-            }
-
-            public void SetLogLevel(LogLevel logLevel)
-            {
-                _isDebug = logLevel <= LogLevel.DEBUG;
-                _isInfo = logLevel <= LogLevel.INFO;
-                _isWarn = logLevel <= LogLevel.WARN;
-                _isError = logLevel <= LogLevel.ERROR;
             }
         }
     }

@@ -88,6 +88,11 @@ namespace Extreal.Core.Logging.Test
         // Customized LogWriter class
         private class TestLogWriter : ILogWriter
         {
+            public ILogWriter Clone()
+            {
+                return new TestLogWriter();
+            }
+
             public void LogDebug(string logCategory, string message)
             {
                 Debug.Log($"(o-o) {logCategory}: {message}");

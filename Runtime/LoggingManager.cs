@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+
 namespace Extreal.Core.Logging
 {
     public static class LoggingManager
@@ -14,7 +15,7 @@ namespace Extreal.Core.Logging
             {
                 return s_loggerDict[logCategory];
             }
-            return s_loggerDict[logCategory] = new Logger(logCategory, s_writer, s_checker);
+            return s_loggerDict[logCategory] = new Logger(logCategory, s_writer.Clone(), s_checker.Clone());
         }
 
         public static void SetLogLevel(LogLevel logLevel)

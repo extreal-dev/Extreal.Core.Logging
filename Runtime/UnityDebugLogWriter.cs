@@ -1,10 +1,16 @@
-﻿using System;
+﻿using System.Text;
+using System;
 using UnityEngine;
 
 namespace Extreal.Core.Logging
 {
     public class UnityDebugLogWriter : ILogWriter
     {
+        public ILogWriter Clone()
+        {
+            return new UnityDebugLogWriter();
+        }
+
         public void LogDebug(string logCategory, string message)
         {
             Debug.Log($"[{LogLevel.DEBUG}:{logCategory}] {message}");
