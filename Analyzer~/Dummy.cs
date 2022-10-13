@@ -1,6 +1,1 @@
-namespace Extreal.Core.Logging.Analyzer
-{
-    public class Dummy
-    {
-    }
-}
+// This file is required to define the analyzer assembly.
