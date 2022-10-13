@@ -21,7 +21,7 @@ namespace Extreal.Core.Logging
 
         public void LogDebug(string message)
         {
-            if (_checker.IsDebug(_logCategory))
+            if (IsDebug())
             {
                 _writer.LogDebug(_logCategory, message);
             }
@@ -29,7 +29,7 @@ namespace Extreal.Core.Logging
 
         public void LogDebug(string message, Exception exception)
         {
-            if (_checker.IsDebug(_logCategory))
+            if (IsDebug())
             {
                 _writer.LogDebug(_logCategory, message, exception);
             }
@@ -37,7 +37,7 @@ namespace Extreal.Core.Logging
 
         public void LogInfo(string message)
         {
-            if (_checker.IsInfo(_logCategory))
+            if (IsInfo())
             {
                 _writer.LogInfo(_logCategory, message);
             }
@@ -45,7 +45,7 @@ namespace Extreal.Core.Logging
 
         public void LogInfo(string message, Exception exception)
         {
-            if (_checker.IsInfo(_logCategory))
+            if (IsInfo())
             {
                 _writer.LogInfo(_logCategory, message, exception);
             }
@@ -53,7 +53,7 @@ namespace Extreal.Core.Logging
 
         public void LogWarn(string message)
         {
-            if (_checker.IsWarn(_logCategory))
+            if (IsWarn())
             {
                 _writer.LogWarn(_logCategory, message);
             }
@@ -61,7 +61,7 @@ namespace Extreal.Core.Logging
 
         public void LogWarn(string message, Exception exception)
         {
-            if (_checker.IsWarn(_logCategory))
+            if (IsWarn())
             {
                 _writer.LogWarn(_logCategory, message, exception);
             }
@@ -69,7 +69,7 @@ namespace Extreal.Core.Logging
 
         public void LogError(string message)
         {
-            if (_checker.IsError(_logCategory))
+            if (IsError())
             {
                 _writer.LogError(_logCategory, message);
             }
@@ -77,7 +77,7 @@ namespace Extreal.Core.Logging
 
         public void LogError(string message, Exception exception)
         {
-            if (_checker.IsError(_logCategory))
+            if (IsError())
             {
                 _writer.LogError(_logCategory, message, exception);
             }
