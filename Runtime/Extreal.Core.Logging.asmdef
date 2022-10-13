@@ -1,9 +1,7 @@
 {
     "name": "Extreal.Core.Logging",
     "rootNamespace": "Extreal.Core.Logging",
-    "references": [
-        "Extreal.Core.Logging.Analyzer"
-    ],
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
