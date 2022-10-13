@@ -3,27 +3,27 @@ using NUnit.Framework;
 
 namespace Extreal.Core.Logging.Test
 {
-    public class LogTimeTest
+    public class LogOutputChekerTest
     {
-        private const string LOG_CATEGORY = "TIMETEST";
-
         [SetUp]
         public void Initialize()
         {
             LoggingManagerInitializer.Initialize();
-
-            // Change LogLevel
-            LoggingManager.SetLogLevel(LogLevel.DEBUG);
         }
 
-        /// <summary>
-        /// Test to see if 10,000 log outputs are executed within 7,500 milliseconds
-        /// </summary>
         [Test]
-        public void Test()
+        public void OutputCheck10kTimesWithin15Millisec()
         {
+            #region Settings
+
+            // Change LogLevel
+            const string LOG_CATEGORY = "TIMETEST";
+            LoggingManager.SetLogLevel(LogLevel.DEBUG);
+
             // Make logger
             var logger = LoggingManager.GetLogger(LOG_CATEGORY);
+
+            #endregion
 
             // Start timer
             var timer = new Stopwatch();
@@ -32,14 +32,14 @@ namespace Extreal.Core.Logging.Test
             // Log 10,000 times
             for (var i = 0; i < 10_000; i++)
             {
-                logger.LogDebug("TIMETEST");
+                logger.IsDebug();
             }
 
             // Stop timer
             timer.Stop();
 
-            // Assert that execution time is within 7,500 milliseconds
-            Assert.Less(timer.ElapsedMilliseconds, 7_500);
+            // Assert that execution time is within 15 milliseconds
+            Assert.Less(timer.ElapsedMilliseconds, 15);
         }
     }
 }
