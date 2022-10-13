@@ -1,7 +1,7 @@
 # EditorConfig is awesome: https://EditorConfig.org
 
 # top-most EditorConfig file
-root = true
+root = false
 
 # Don't use tabs for indentation.
 [*]
@@ -308,3 +308,5 @@ dotnet_code_quality.CA1822.api_surface = private
 dotnet_diagnostic.CC0052.severity = none
 # CC0091: Make method static
 dotnet_diagnostic.CC0091.severity = none
+# CC0034: Remove default value asignment
+dotnet_diagnostic.CC0034.severity = none
