@@ -18,10 +18,10 @@
         public void SetLogLevel(LogLevel logLevel)
         {
             _logLevel = logLevel;
-            _isDebug = logLevel <= LogLevel.DEBUG;
-            _isInfo = logLevel <= LogLevel.INFO;
-            _isWarn = logLevel <= LogLevel.WARN;
-            _isError = logLevel <= LogLevel.ERROR;
+            _isDebug = logLevel <= LogLevel.Debug;
+            _isInfo = logLevel <= LogLevel.Info;
+            _isWarn = logLevel <= LogLevel.Warn;
+            _isError = logLevel <= LogLevel.Error;
         }
 
         public bool IsDebug(string logCategory)

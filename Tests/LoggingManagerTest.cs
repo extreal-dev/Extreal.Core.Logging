@@ -44,25 +44,25 @@ namespace Extreal.Core.Logging.Test
             // Test to print info
             message = "Info";
             logger.LogInfo(message);
-            LogAssert.Expect(LogType.Log, $"[{LogLevel.INFO}:{LOG_CATEGORY}] {message}");
+            LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] {message}");
             logger.LogInfo(message, _exception);
-            LogAssert.Expect(LogType.Log, $"[{LogLevel.INFO}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
+            LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
             Assert.IsTrue(logger.IsInfo());
 
             // Test to print warn
             message = "Warn";
             logger.LogWarn(message);
-            LogAssert.Expect(LogType.Warning, $"[{LogLevel.WARN}:{LOG_CATEGORY}] {message}");
+            LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}");
             logger.LogWarn(message, _exception);
-            LogAssert.Expect(LogType.Warning, $"[{LogLevel.WARN}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
+            LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
             Assert.IsTrue(logger.IsWarn());
 
             // Test to print error
             message = "Error";
             logger.LogError(message);
-            LogAssert.Expect(LogType.Error, $"[{LogLevel.ERROR}:{LOG_CATEGORY}] {message}");
+            LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}");
             logger.LogError(message, _exception);
-            LogAssert.Expect(LogType.Error, $"[{LogLevel.ERROR}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
+            LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
             Assert.IsTrue(logger.IsError());
         }
 
@@ -72,7 +72,7 @@ namespace Extreal.Core.Logging.Test
             #region Settings
 
             // Set log level to DEBUG
-            LoggingManager.SetLogLevel(LogLevel.DEBUG);
+            LoggingManager.SetLogLevel(LogLevel.Debug);
 
             // Make logger
             const string LOG_CATEGORY = "DEBUGTEST";
@@ -83,30 +83,30 @@ namespace Extreal.Core.Logging.Test
             // Test to print debug
             var message = "Debug";
             logger.LogDebug(message);
-            LogAssert.Expect(LogType.Log, $"[{LogLevel.DEBUG}:{LOG_CATEGORY}] {message}");
+            LogAssert.Expect(LogType.Log, $"[{LogLevel.Debug}:{LOG_CATEGORY}] {message}");
             logger.LogDebug(message, _exception);
-            LogAssert.Expect(LogType.Log, $"[{LogLevel.DEBUG}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
+            LogAssert.Expect(LogType.Log, $"[{LogLevel.Debug}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
 
             // Test to print info
             message = "Info";
             logger.LogInfo(message);
-            LogAssert.Expect(LogType.Log, $"[{LogLevel.INFO}:{LOG_CATEGORY}] {message}");
+            LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] {message}");
             logger.LogInfo(message, _exception);
-            LogAssert.Expect(LogType.Log, $"[{LogLevel.INFO}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
+            LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
 
             // Test to print warn
             message = "Warn";
             logger.LogWarn(message);
-            LogAssert.Expect(LogType.Warning, $"[{LogLevel.WARN}:{LOG_CATEGORY}] {message}");
+            LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}");
             logger.LogWarn(message, _exception);
-            LogAssert.Expect(LogType.Warning, $"[{LogLevel.WARN}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
+            LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
 
             // Test to print error
             message = "Error";
             logger.LogError(message);
-            LogAssert.Expect(LogType.Error, $"[{LogLevel.ERROR}:{LOG_CATEGORY}] {message}");
+            LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}");
             logger.LogError(message, _exception);
-            LogAssert.Expect(LogType.Error, $"[{LogLevel.ERROR}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
+            LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
         }
 
         [Test]
@@ -115,7 +115,7 @@ namespace Extreal.Core.Logging.Test
             #region Settings
 
             // Set log level to INFO
-            LoggingManager.SetLogLevel(LogLevel.INFO);
+            LoggingManager.SetLogLevel(LogLevel.Info);
 
             // Make logger
             const string LOG_CATEGORY = "INFOTEST";
@@ -133,23 +133,23 @@ namespace Extreal.Core.Logging.Test
             // Test to print info
             message = "Info";
             logger.LogInfo(message);
-            LogAssert.Expect(LogType.Log, $"[{LogLevel.INFO}:{LOG_CATEGORY}] {message}");
+            LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] {message}");
             logger.LogInfo(message, _exception);
-            LogAssert.Expect(LogType.Log, $"[{LogLevel.INFO}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
+            LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
 
             // Test to print warn
             message = "Warn";
             logger.LogWarn(message);
-            LogAssert.Expect(LogType.Warning, $"[{LogLevel.WARN}:{LOG_CATEGORY}] {message}");
+            LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}");
             logger.LogWarn(message, _exception);
-            LogAssert.Expect(LogType.Warning, $"[{LogLevel.WARN}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
+            LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
 
             // Test to print error
             message = "Error";
             logger.LogError(message);
-            LogAssert.Expect(LogType.Error, $"[{LogLevel.ERROR}:{LOG_CATEGORY}] {message}");
+            LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}");
             logger.LogError(message, _exception);
-            LogAssert.Expect(LogType.Error, $"[{LogLevel.ERROR}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
+            LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
         }
 
         [Test]
@@ -158,7 +158,7 @@ namespace Extreal.Core.Logging.Test
             #region Settings
 
             // Set log level to WARN
-            LoggingManager.SetLogLevel(LogLevel.WARN);
+            LoggingManager.SetLogLevel(LogLevel.Warn);
 
             // Make logger
             const string LOG_CATEGORY = "WARNTEST";
@@ -183,16 +183,16 @@ namespace Extreal.Core.Logging.Test
             // Test to print warn
             message = "Warn";
             logger.LogWarn(message);
-            LogAssert.Expect(LogType.Warning, $"[{LogLevel.WARN}:{LOG_CATEGORY}] {message}");
+            LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}");
             logger.LogWarn(message, _exception);
-            LogAssert.Expect(LogType.Warning, $"[{LogLevel.WARN}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
+            LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
 
             // Test to print error
             message = "Error";
             logger.LogError(message);
-            LogAssert.Expect(LogType.Error, $"[{LogLevel.ERROR}:{LOG_CATEGORY}] {message}");
+            LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}");
             logger.LogError(message, _exception);
-            LogAssert.Expect(LogType.Error, $"[{LogLevel.ERROR}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
+            LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
         }
 
         [Test]
@@ -201,7 +201,7 @@ namespace Extreal.Core.Logging.Test
             #region Settings
 
             // Set log level to ERROR
-            LoggingManager.SetLogLevel(LogLevel.ERROR);
+            LoggingManager.SetLogLevel(LogLevel.Error);
 
             // Make logger
             const string LOG_CATEGORY = "ERRORTEST";
@@ -233,9 +233,9 @@ namespace Extreal.Core.Logging.Test
             // Test to print error
             message = "Error";
             logger.LogError(message);
-            LogAssert.Expect(LogType.Error, $"[{LogLevel.ERROR}:{LOG_CATEGORY}] {message}");
+            LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}");
             logger.LogError(message, _exception);
-            LogAssert.Expect(LogType.Error, $"[{LogLevel.ERROR}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
+            LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
         }
 
         [Test]
@@ -255,30 +255,30 @@ namespace Extreal.Core.Logging.Test
             // Test to print debug
             var message = "Debug";
             logger.LogDebug(message);
-            LogAssert.Expect(LogType.Log, $"[{LogLevel.DEBUG}:{LOG_CATEGORY}] {message}");
+            LogAssert.Expect(LogType.Log, $"[{LogLevel.Debug}:{LOG_CATEGORY}] {message}");
             logger.LogDebug(message, _exception);
-            LogAssert.Expect(LogType.Log, $"[{LogLevel.DEBUG}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
+            LogAssert.Expect(LogType.Log, $"[{LogLevel.Debug}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
 
             // Test to print info
             message = "Info";
             logger.LogInfo(message);
-            LogAssert.Expect(LogType.Log, $"[{LogLevel.INFO}:{LOG_CATEGORY}] {message}");
+            LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] {message}");
             logger.LogInfo(message, _exception);
-            LogAssert.Expect(LogType.Log, $"[{LogLevel.INFO}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
+            LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
 
             // Test to print warn
             message = "Warn";
             logger.LogWarn(message);
-            LogAssert.Expect(LogType.Warning, $"[{LogLevel.WARN}:{LOG_CATEGORY}] {message}");
+            LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}");
             logger.LogWarn(message, _exception);
-            LogAssert.Expect(LogType.Warning, $"[{LogLevel.WARN}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
+            LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
 
             // Test to print error
             message = "Error";
             logger.LogError(message);
-            LogAssert.Expect(LogType.Error, $"[{LogLevel.ERROR}:{LOG_CATEGORY}] {message}");
+            LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}");
             logger.LogError(message, _exception);
-            LogAssert.Expect(LogType.Error, $"[{LogLevel.ERROR}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
+            LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
         }
 
         [Test]

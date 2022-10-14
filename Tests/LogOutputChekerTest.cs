@@ -18,7 +18,7 @@ namespace Extreal.Core.Logging.Test
 
             // Change LogLevel
             const string LOG_CATEGORY = "TIMETEST";
-            LoggingManager.SetLogLevel(LogLevel.DEBUG);
+            LoggingManager.SetLogLevel(LogLevel.Debug);
 
             // Make logger
             var logger = LoggingManager.GetLogger(LOG_CATEGORY);
