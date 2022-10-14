@@ -2,22 +2,22 @@
 
 namespace Extreal.Core.Logging.Test
 {
-    public static class LogGetter
+    public static class UnityDebugTestUtil
     {
         public static string LogText { get; private set; }
 
-        public static void Initialize()
+        public static void StartLogReceive()
         {
             Application.logMessageReceived += OnLogMessageReceived;
             LogText = "";
         }
 
-        public static void Dispose()
+        public static void StopLogReceive()
         {
             Application.logMessageReceived -= OnLogMessageReceived;
         }
 
-        public static void LogTextClear()
+        public static void ClearLogText()
         {
             LogText = "";
         }

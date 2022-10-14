@@ -12,13 +12,13 @@ namespace Extreal.Core.Logging.Test
         [SetUp]
         public void Initialize()
         {
-            LogGetter.Initialize();
+            UnityDebugTestUtil.StartLogReceive();
         }
 
         [TearDown]
         public void Dispose()
         {
-            LogGetter.Dispose();
+            UnityDebugTestUtil.StopLogReceive();
         }
 
         [Test]
@@ -38,9 +38,9 @@ namespace Extreal.Core.Logging.Test
             // Test to print debug
             var message = "Debug";
             logger.LogDebug(message);
-            Assert.IsEmpty(LogGetter.LogText);
+            Assert.IsEmpty(UnityDebugTestUtil.LogText);
             logger.LogDebug(message, _exception);
-            Assert.IsEmpty(LogGetter.LogText);
+            Assert.IsEmpty(UnityDebugTestUtil.LogText);
             Assert.IsFalse(logger.IsDebug());
 
             // Test to print info
@@ -128,9 +128,9 @@ namespace Extreal.Core.Logging.Test
             // Test to print debug
             var message = "Debug";
             logger.LogDebug(message);
-            Assert.IsEmpty(LogGetter.LogText);
+            Assert.IsEmpty(UnityDebugTestUtil.LogText);
             logger.LogDebug(message, _exception);
-            Assert.IsEmpty(LogGetter.LogText);
+            Assert.IsEmpty(UnityDebugTestUtil.LogText);
 
             // Test to print info
             message = "Info";
@@ -171,16 +171,16 @@ namespace Extreal.Core.Logging.Test
             // Test to print debug
             var message = "Debug";
             logger.LogDebug(message);
-            Assert.IsEmpty(LogGetter.LogText);
+            Assert.IsEmpty(UnityDebugTestUtil.LogText);
             logger.LogDebug(message, _exception);
-            Assert.IsEmpty(LogGetter.LogText);
+            Assert.IsEmpty(UnityDebugTestUtil.LogText);
 
             // Test to print info
             message = "Info";
             logger.LogInfo(message);
-            Assert.IsEmpty(LogGetter.LogText);
+            Assert.IsEmpty(UnityDebugTestUtil.LogText);
             logger.LogInfo(message, _exception);
-            Assert.IsEmpty(LogGetter.LogText);
+            Assert.IsEmpty(UnityDebugTestUtil.LogText);
 
             // Test to print warn
             message = "Warn";
@@ -214,23 +214,23 @@ namespace Extreal.Core.Logging.Test
             // Test to print debug
             var message = "Debug";
             logger.LogDebug(message);
-            Assert.IsEmpty(LogGetter.LogText);
+            Assert.IsEmpty(UnityDebugTestUtil.LogText);
             logger.LogDebug(message, _exception);
-            Assert.IsEmpty(LogGetter.LogText);
+            Assert.IsEmpty(UnityDebugTestUtil.LogText);
 
             // Test to print info
             message = "Info";
             logger.LogInfo(message);
-            Assert.IsEmpty(LogGetter.LogText);
+            Assert.IsEmpty(UnityDebugTestUtil.LogText);
             logger.LogInfo(message, _exception);
-            Assert.IsEmpty(LogGetter.LogText);
+            Assert.IsEmpty(UnityDebugTestUtil.LogText);
 
             // Test to print warn
             message = "Warn";
             logger.LogWarn(message);
-            Assert.IsEmpty(LogGetter.LogText);
+            Assert.IsEmpty(UnityDebugTestUtil.LogText);
             logger.LogWarn(message, _exception);
-            Assert.IsEmpty(LogGetter.LogText);
+            Assert.IsEmpty(UnityDebugTestUtil.LogText);
 
             // Test to print error
             message = "Error";
@@ -300,9 +300,9 @@ namespace Extreal.Core.Logging.Test
             // Test to print debug
             var message = "Debug";
             logger.LogDebug(message);
-            Assert.IsEmpty(LogGetter.LogText);
+            Assert.IsEmpty(UnityDebugTestUtil.LogText);
             logger.LogDebug(message, _exception);
-            Assert.IsEmpty(LogGetter.LogText);
+            Assert.IsEmpty(UnityDebugTestUtil.LogText);
 
             // Test to print info
             message = "Info";
