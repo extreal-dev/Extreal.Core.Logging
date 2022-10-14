@@ -6,11 +6,6 @@ namespace Extreal.Core.Logging
 {
     public class UnityDebugLogWriter : ILogWriter
     {
-        public ILogWriter Clone()
-        {
-            return new UnityDebugLogWriter();
-        }
-
         public void LogDebug(string logCategory, string message)
         {
             Debug.Log(LogFormat(logCategory, LogLevel.Debug, message));

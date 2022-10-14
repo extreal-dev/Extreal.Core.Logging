@@ -5,12 +5,6 @@ namespace Extreal.Core.Logging.Test
 {
     public class LogOutputChekerTest
     {
-        [SetUp]
-        public void Initialize()
-        {
-            LoggingManagerInitializer.Initialize();
-        }
-
         [Test]
         public void OutputCheck10kTimesWithin15Millisec()
         {
@@ -18,7 +12,7 @@ namespace Extreal.Core.Logging.Test
 
             // Change LogLevel
             const string LOG_CATEGORY = "TIMETEST";
-            LoggingManager.SetLogLevel(LogLevel.Debug);
+            LoggingManager.Initialize(LogLevel.Debug);
 
             // Make logger
             var logger = LoggingManager.GetLogger(LOG_CATEGORY);

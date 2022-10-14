@@ -12,7 +12,6 @@ namespace Extreal.Core.Logging.Test
         [SetUp]
         public void Initialize()
         {
-            LoggingManagerInitializer.Initialize();
             LogGetter.Initialize();
         }
 
@@ -26,6 +25,9 @@ namespace Extreal.Core.Logging.Test
         public void DefaultLogger()
         {
             #region Setting
+
+            // Initialize LoggingManager
+            LoggingManager.Initialize();
 
             // Make logger
             const string LOG_CATEGORY = "DEFAULTTEST";
@@ -72,7 +74,7 @@ namespace Extreal.Core.Logging.Test
             #region Settings
 
             // Set log level to DEBUG
-            LoggingManager.SetLogLevel(LogLevel.Debug);
+            LoggingManager.Initialize(LogLevel.Debug);
 
             // Make logger
             const string LOG_CATEGORY = "DEBUGTEST";
@@ -115,7 +117,7 @@ namespace Extreal.Core.Logging.Test
             #region Settings
 
             // Set log level to INFO
-            LoggingManager.SetLogLevel(LogLevel.Info);
+            LoggingManager.Initialize(LogLevel.Info);
 
             // Make logger
             const string LOG_CATEGORY = "INFOTEST";
@@ -158,7 +160,7 @@ namespace Extreal.Core.Logging.Test
             #region Settings
 
             // Set log level to WARN
-            LoggingManager.SetLogLevel(LogLevel.Warn);
+            LoggingManager.Initialize(LogLevel.Warn);
 
             // Make logger
             const string LOG_CATEGORY = "WARNTEST";
@@ -201,7 +203,7 @@ namespace Extreal.Core.Logging.Test
             #region Settings
 
             // Set log level to ERROR
-            LoggingManager.SetLogLevel(LogLevel.Error);
+            LoggingManager.Initialize(LogLevel.Error);
 
             // Make logger
             const string LOG_CATEGORY = "ERRORTEST";
@@ -244,7 +246,7 @@ namespace Extreal.Core.Logging.Test
             #region Settings
 
             // Change LogOutputChecker
-            LoggingManager.SetLogOutputChecker(new AppLogOutputChecker());
+            LoggingManager.Initialize(checker: new AppLogOutputChecker());
 
             // Make logger
             const string LOG_CATEGORY = "Debugger";
@@ -287,7 +289,7 @@ namespace Extreal.Core.Logging.Test
             #region Settings
 
             // Change LogWriter
-            LoggingManager.SetLogWriter(new AppLogWriter());
+            LoggingManager.Initialize(writer: new AppLogWriter());
 
             // Make logger
             const string LOG_CATEGORY = "WRITERTEST";
@@ -349,6 +351,9 @@ namespace Extreal.Core.Logging.Test
         public void SameCategoryLoggerIsSame()
         {
             #region Setting
+
+            // Initialize LoggingManager
+            LoggingManager.Initialize();
 
             // Make logger
             const string LOG_CATEGORY = "SAMECATEGORYTEST";

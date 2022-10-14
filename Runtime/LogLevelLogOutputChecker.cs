@@ -8,13 +8,6 @@
         private bool _isWarn = true;
         private bool _isError = true;
 
-        public ILogOutputChecker Clone()
-        {
-            var checkerClone = new LogLevelLogOutputChecker();
-            checkerClone.SetLogLevel(_logLevel);
-            return checkerClone;
-        }
-
         public void SetLogLevel(LogLevel logLevel)
         {
             _logLevel = logLevel;
