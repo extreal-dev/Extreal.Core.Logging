@@ -6,16 +6,16 @@ namespace Extreal.Core.Logging
     {
         private static ILogWriter s_writer = new UnityDebugLogWriter();
         private static ILogOutputChecker s_checker = new LogLevelLogOutputChecker();
-        private static Dictionary<string, Logger> s_loggerDict = new Dictionary<string, Logger>();
         private static LogLevel s_logLevel = LogLevel.Info;
+        private static Dictionary<string, Logger> s_loggers = new Dictionary<string, Logger>();
 
         public static Logger GetLogger(string logCategory)
         {
-            if (s_loggerDict.ContainsKey(logCategory))
+            if (s_loggers.ContainsKey(logCategory))
             {
-                return s_loggerDict[logCategory];
+                return s_loggers[logCategory];
             }
-            return s_loggerDict[logCategory] = new Logger(logCategory, s_writer.Clone(), s_checker.Clone());
+            return s_loggers[logCategory] = new Logger(logCategory, s_writer.Clone(), s_checker.Clone());
         }
 
         public static void SetLogLevel(LogLevel logLevel)
