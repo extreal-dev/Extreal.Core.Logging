@@ -5,11 +5,6 @@ namespace Extreal.Core.Logging.Test
 {
     public class AppLogWriter : ILogWriter
     {
-        public ILogWriter Clone()
-        {
-            return new AppLogWriter();
-        }
-
         public void LogDebug(string logCategory, string message)
         {
             Debug.Log($"(o-o) {logCategory}: {message}");

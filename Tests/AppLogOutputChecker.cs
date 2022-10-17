@@ -2,22 +2,13 @@
 {
     public class AppLogOutputChecker : ILogOutputChecker
     {
-        private LogLevel _logLevel;
         private bool _isDebug;
         private bool _isInfo;
         private bool _isWarn;
         private bool _isError;
 
-        public ILogOutputChecker Clone()
-        {
-            var checkerClone = new AppLogOutputChecker();
-            checkerClone.SetLogLevel(_logLevel);
-            return checkerClone;
-        }
-
         public void SetLogLevel(LogLevel logLevel)
         {
-            _logLevel = logLevel;
             _isDebug = logLevel <= LogLevel.Debug;
             _isInfo = logLevel <= LogLevel.Info;
             _isWarn = logLevel <= LogLevel.Warn;
