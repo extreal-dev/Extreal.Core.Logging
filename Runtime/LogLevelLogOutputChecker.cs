@@ -5,7 +5,6 @@
     /// </summary>
     public class LogLevelLogOutputChecker : ILogOutputChecker
     {
-        private LogLevel _logLevel;
         private bool _isDebug = false;
         private bool _isInfo = true;
         private bool _isWarn = true;
@@ -17,7 +16,6 @@
         /// <param name="logLevel">LogLevel to be set.</param>
         public void SetLogLevel(LogLevel logLevel)
         {
-            _logLevel = logLevel;
             _isDebug = logLevel <= LogLevel.Debug;
             _isInfo = logLevel <= LogLevel.Info;
             _isWarn = logLevel <= LogLevel.Warn;
