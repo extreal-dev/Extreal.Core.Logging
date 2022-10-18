@@ -17,7 +17,8 @@ namespace Extreal.Core.Logging
         /// <param name="logCategory">Category to log.</param>
         /// <param name="logWriter">Used that logs are output.</param>
         /// <param name="logOutputChecker">Used to check if logs are output according to LogLevel.</param>
-        public Logger(
+        internal Logger
+        (
             string logCategory,
             ILogWriter logWriter,
             ILogOutputChecker logOutputChecker
