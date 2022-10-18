@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -313,9 +313,9 @@ namespace Extreal.Core.Logging.Test
             (
                 LogType.Log,
                 $"(^_^) {LOG_CATEGORY}: {message}"
-                    + "---- Exception ----"
+                    + "\n---- Exception ----\n"
                     + _exception
-                    + "-------------------"
+                    + "\n-------------------\n"
             );
 
             // Test to print warn
@@ -327,9 +327,9 @@ namespace Extreal.Core.Logging.Test
             (
                 LogType.Warning,
                 $"(--; {LOG_CATEGORY}: {message}"
-                    + "---- Exception ----"
+                    + "\n---- Exception ----\n"
                     + _exception
-                    + "-------------------"
+                    + "\n-------------------\n"
             );
 
             // Test to print error
@@ -341,9 +341,9 @@ namespace Extreal.Core.Logging.Test
             (
                 LogType.Error,
                 $"(*A*; {LOG_CATEGORY}: {message}"
-                    + "---- Exception ----"
+                    + "\n---- Exception ----\n"
                     + _exception
-                    + "-------------------"
+                    + "\n-------------------\n"
             );
         }
 
