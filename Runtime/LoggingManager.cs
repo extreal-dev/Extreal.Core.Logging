@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Extreal.Core.Logging
 {
@@ -19,6 +20,10 @@ namespace Extreal.Core.Logging
         /// <returns>Logger with logCategory.</returns>
         public static Logger GetLogger(string logCategory)
         {
+            if (logCategory == null)
+            {
+                throw new ArgumentNullException(nameof(logCategory));
+            }
             if (s_loggers.ContainsKey(logCategory))
             {
                 return s_loggers[logCategory];

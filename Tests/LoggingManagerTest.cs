@@ -260,6 +260,7 @@ namespace Extreal.Core.Logging.Test
             LogAssert.Expect(LogType.Log, $"[{LogLevel.Debug}:{LOG_CATEGORY}] {message}");
             logger.LogDebug(message, _exception);
             LogAssert.Expect(LogType.Log, $"[{LogLevel.Debug}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
+            Assert.IsTrue(logger.IsDebug());
 
             // Test to print info
             message = "Info";
@@ -267,6 +268,7 @@ namespace Extreal.Core.Logging.Test
             LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] {message}");
             logger.LogInfo(message, _exception);
             LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
+            Assert.IsTrue(logger.IsInfo());
 
             // Test to print warn
             message = "Warn";
@@ -274,6 +276,7 @@ namespace Extreal.Core.Logging.Test
             LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}");
             logger.LogWarn(message, _exception);
             LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
+            Assert.IsTrue(logger.IsWarn());
 
             // Test to print error
             message = "Error";
@@ -281,6 +284,7 @@ namespace Extreal.Core.Logging.Test
             LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}");
             logger.LogError(message, _exception);
             LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
+            Assert.IsTrue(logger.IsError());
         }
 
         [Test]
@@ -363,6 +367,139 @@ namespace Extreal.Core.Logging.Test
             #endregion
 
             Assert.AreSame(loggerA, loggerB);
+        }
+
+        [Test]
+        public void LogOutputCheckerIsNull()
+        {
+            #region settings
+
+            // Set checker null
+            LoggingManager.Initialize(checker: null);
+
+            // Make logger
+            // Logger behaves the same as default logger
+            const string LOG_CATEGORY = "CheckerNullTest";
+            var logger = LoggingManager.GetLogger(LOG_CATEGORY);
+
+            #endregion
+
+            // Test to print debug
+            var message = "Debug";
+            logger.LogDebug(message);
+            Assert.IsEmpty(UnityDebugTestUtil.LogText);
+            logger.LogDebug(message, _exception);
+            Assert.IsEmpty(UnityDebugTestUtil.LogText);
+
+            // Test to print info
+            message = "Info";
+            logger.LogInfo(message);
+            LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] {message}");
+            logger.LogInfo(message, _exception);
+            LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
+
+            // Test to print warn
+            message = "Warn";
+            logger.LogWarn(message);
+            LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}");
+            logger.LogWarn(message, _exception);
+            LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
+
+            // Test to print error
+            message = "Error";
+            logger.LogError(message);
+            LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}");
+            logger.LogError(message, _exception);
+            LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
+        }
+
+        [Test]
+        public void LogWriterIsNull()
+        {
+            #region settings
+
+            // Set checker null
+            LoggingManager.Initialize(writer: null);
+
+            // Make logger
+            // Logger behaves the same as default logger
+            const string LOG_CATEGORY = "WriterNullTest";
+            var logger = LoggingManager.GetLogger(LOG_CATEGORY);
+
+            #endregion
+
+            // Test to print debug
+            var message = "Debug";
+            logger.LogDebug(message);
+            Assert.IsEmpty(UnityDebugTestUtil.LogText);
+            logger.LogDebug(message, _exception);
+            Assert.IsEmpty(UnityDebugTestUtil.LogText);
+
+            // Test to print info
+            message = "Info";
+            logger.LogInfo(message);
+            LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] {message}");
+            logger.LogInfo(message, _exception);
+            LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
+
+            // Test to print warn
+            message = "Warn";
+            logger.LogWarn(message);
+            LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}");
+            logger.LogWarn(message, _exception);
+            LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
+
+            // Test to print error
+            message = "Error";
+            logger.LogError(message);
+            LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}");
+            logger.LogError(message, _exception);
+            LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
+        }
+
+        [Test]
+        public void LogCategoryIsNull()
+        {
+            // Making logger throws ArgumentNullException exception
+            const string LOG_CATEGORY = null;
+            Assert.Throws<ArgumentNullException>(() => LoggingManager.GetLogger(LOG_CATEGORY));
+        }
+
+        [Test]
+        public void LogMessageIsNull()
+        {
+            #region settings
+
+            const string LOG_CATEGORY = "LogMessageNullTest";
+            var logger = LoggingManager.GetLogger(LOG_CATEGORY);
+
+            #endregion
+
+            // Test to print info
+            // Logs are output except message
+            const string Message = null;
+            logger.LogInfo(Message);
+            LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] ");
+            logger.LogInfo(Message, _exception);
+            LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] \n----------\n{_exception}");
+        }
+
+        [Test]
+        public void LogExceptionIsNull()
+        {
+            #region settings
+
+            const string LOG_CATEGORY = "LogExceptionNullTest";
+            var logger = LoggingManager.GetLogger(LOG_CATEGORY);
+
+            #endregion
+
+            // Test to print info
+            // Logs that are the same as ones with only message are output
+            const string Message = "Info";
+            const Exception Exception = null;
+            logger.LogInfo(Message, Exception);
+            LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] {Message}");
         }
     }
 }
