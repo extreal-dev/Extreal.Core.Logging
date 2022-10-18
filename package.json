@@ -1,10 +1,10 @@
 {
-    "name": "jp.co.tis.extreal.core.logging",
-    "version": "0.1.0",
-    "displayName": "Extreal.Core.Logging",
-    "unity": "2021.3",
-    "author": {
-        "name": "TIS Inc."
-    },
-    "dependencies": {}
+  "name": "jp.co.tis.extreal.core.logging",
+  "version": "0.1.0",
+  "displayName": "Extreal.Core.Logging",
+  "unity": "2021.3",
+  "author": {
+      "name": "TIS Inc."
+  },
+  "dependencies": {}
 }
