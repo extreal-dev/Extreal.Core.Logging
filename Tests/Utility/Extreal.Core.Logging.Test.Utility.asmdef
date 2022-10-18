@@ -1,6 +1,6 @@
 {
-    "name": "Extreal.Core.Logging.Test",
-    "rootNamespace": "",
+    "name": "Extreal.Core.Logging.Test.Utility",
+    "rootNamespace": "Extreal.Core.Logging.Test.Utility",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
