@@ -39,7 +39,7 @@ namespace Extreal.Core.Logging
         {
             s_checker = checker ?? new LogLevelLogOutputChecker();
             s_writer = writer ?? new UnityDebugLogWriter();
-            s_checker.SetLogLevel(logLevel);
+            s_checker.Initialize(logLevel);
             s_loggers.Clear();
         }
     }
