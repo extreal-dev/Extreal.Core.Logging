@@ -6,10 +6,10 @@
     public interface ILogOutputChecker
     {
         /// <summary>
-        /// Sets LogLevel.
+        /// Initializes LogOutputChecker according to LogLevel.
         /// </summary>
-        /// <param name="logLevel">LogLevel to be set.</param>
-        void SetLogLevel(LogLevel logLevel);
+        /// <param name="logLevel">LogLevel used to initialize.</param>
+        void Initialize(LogLevel logLevel);
 
         /// <summary>
         /// Checks if debug logs are output.

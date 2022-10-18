@@ -11,10 +11,10 @@
         private bool _isError = true;
 
         /// <summary>
-        /// Sets LogLevel.
+        /// Initializes LogOutputChecker according to LogLevel.
         /// </summary>
-        /// <param name="logLevel">LogLevel to be set.</param>
-        public void SetLogLevel(LogLevel logLevel)
+        /// <param name="logLevel">LogLevel used to initialize.</param>
+        public void Initialize(LogLevel logLevel)
         {
             _isDebug = logLevel <= LogLevel.Debug;
             _isInfo = logLevel <= LogLevel.Info;

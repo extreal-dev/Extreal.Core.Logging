@@ -7,7 +7,7 @@
         private bool _isWarn;
         private bool _isError;
 
-        public void SetLogLevel(LogLevel logLevel)
+        public void Initialize(LogLevel logLevel)
         {
             _isDebug = logLevel <= LogLevel.Debug;
             _isInfo = logLevel <= LogLevel.Info;
