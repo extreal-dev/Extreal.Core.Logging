@@ -28,7 +28,7 @@ namespace Extreal.Core.Logging
 
         /// <summary>
         /// Initializes LoggingManager.
-        /// As default, let logLevel be Info, let checker be LogLevelLogOutputChecker
+        /// By default, let logLevel be Info, let checker be LogLevelLogOutputChecker
         /// and let writer be UnityDebugLogWriter.
         /// In addition, clear Logger history.
         /// </summary>

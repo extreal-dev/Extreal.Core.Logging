@@ -3,7 +3,9 @@
 namespace Extreal.Core.Logging
 {
     /// <summary>
-    /// Class for handling logs.
+    /// <para>Class for handling logs.</para>
+    /// Checks automatically using class implementing ILogOutputChecker if logs should be output before logs are output.
+    /// Logs are output using class implementing ILogWriter.
     /// </summary>
     public class Logger
     {

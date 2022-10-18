@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Extreal.Core.Logging
 {
     /// <summary>
-    /// Class used as default for logging.
+    /// Class used by default for logging.
     /// </summary>
     public class UnityDebugLogWriter : ILogWriter
     {

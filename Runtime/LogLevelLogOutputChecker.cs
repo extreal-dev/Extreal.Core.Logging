@@ -1,7 +1,7 @@
 ﻿namespace Extreal.Core.Logging
 {
     /// <summary>
-    /// Class used as default to check if logs should be output.
+    /// Class used by default to check if logs should be output.
     /// </summary>
     public class LogLevelLogOutputChecker : ILogOutputChecker
     {
