@@ -3,15 +3,15 @@ using NUnit.Framework;
 
 namespace Extreal.Core.Logging.Test
 {
-    public class LogOutputChekerTest
+    public class LogOutputCheckerTest
     {
         [Test]
-        public void OutputCheck10kTimesWithin15Millisec()
+        public void OutputCheck10kTimesWithin15Milliseconds()
         {
             #region Settings
 
             // Change LogLevel
-            const string LOG_CATEGORY = "TIMETEST";
+            const string LOG_CATEGORY = "TimeTest";
             LoggingManager.Initialize(LogLevel.Debug);
 
             // Make logger

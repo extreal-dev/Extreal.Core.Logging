@@ -31,7 +31,7 @@ namespace Extreal.Core.Logging
         }
 
         /// <summary>
-        /// Logs infomation.
+        /// Logs information.
         /// </summary>
         /// <param name="logCategory">Category used in logs.</param>
         /// <param name="message">Message to log.</param>
@@ -41,7 +41,7 @@ namespace Extreal.Core.Logging
         }
 
         /// <summary>
-        /// Logs infomation with exception.
+        /// Logs information with exception.
         /// </summary>
         /// <param name="logCategory">Category used in logs.</param>
         /// <param name="message">Message to log.</param>

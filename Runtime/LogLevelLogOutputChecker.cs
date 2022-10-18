@@ -1,7 +1,7 @@
 ﻿namespace Extreal.Core.Logging
 {
     /// <summary>
-    /// Class used as default to check if logs should be ouput.
+    /// Class used as default to check if logs should be output.
     /// </summary>
     public class LogLevelLogOutputChecker : ILogOutputChecker
     {
@@ -33,10 +33,10 @@
         }
 
         /// <summary>
-        /// Checks if infomation logs are output.
+        /// Checks if information logs are output.
         /// </summary>
         /// <param name="logCategory">Log category used to check.</param>
-        /// <returns>True if it is set to log infomation, false otherwise.</returns>
+        /// <returns>True if it is set to log information, false otherwise.</returns>
         public bool IsInfo(string logCategory)
         {
             return _isInfo;

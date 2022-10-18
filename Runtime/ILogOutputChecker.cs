@@ -19,10 +19,10 @@
         bool IsDebug(string logCategory);
 
         /// <summary>
-        /// Checks if infomation logs are output.
+        /// Checks if information logs are output.
         /// </summary>
         /// <param name="logCategory">Log category used to check.</param>
-        /// <returns>True if it is set to log infomation, false otherwise.</returns>
+        /// <returns>True if it is set to log information, false otherwise.</returns>
         bool IsInfo(string logCategory);
 
         /// <summary>

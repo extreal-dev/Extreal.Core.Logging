@@ -23,14 +23,14 @@ namespace Extreal.Core.Logging
         void LogDebug(string logCategory, string message, Exception exception);
 
         /// <summary>
-        /// Logs infomation.
+        /// Logs information.
         /// </summary>
         /// <param name="logCategory">Category used in logs.</param>
         /// <param name="message">Message to log.</param>
         void LogInfo(string logCategory, string message);
 
         /// <summary>
-        /// Logs infomation with exception.
+        /// Logs information with exception.
         /// </summary>
         /// <param name="logCategory">Category used in logs.</param>
         /// <param name="message">Message to log.</param>

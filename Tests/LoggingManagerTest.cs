@@ -30,7 +30,7 @@ namespace Extreal.Core.Logging.Test
             LoggingManager.Initialize();
 
             // Make logger
-            const string LOG_CATEGORY = "DEFAULTTEST";
+            const string LOG_CATEGORY = "DefaultTest";
             var logger = LoggingManager.GetLogger(LOG_CATEGORY);
 
             #endregion
@@ -77,7 +77,7 @@ namespace Extreal.Core.Logging.Test
             LoggingManager.Initialize(LogLevel.Debug);
 
             // Make logger
-            const string LOG_CATEGORY = "DEBUGTEST";
+            const string LOG_CATEGORY = "DebugTest";
             var logger = LoggingManager.GetLogger(LOG_CATEGORY);
 
             #endregion
@@ -120,7 +120,7 @@ namespace Extreal.Core.Logging.Test
             LoggingManager.Initialize(LogLevel.Info);
 
             // Make logger
-            const string LOG_CATEGORY = "INFOTEST";
+            const string LOG_CATEGORY = "InfoTest";
             var logger = LoggingManager.GetLogger(LOG_CATEGORY);
 
             #endregion
@@ -163,7 +163,7 @@ namespace Extreal.Core.Logging.Test
             LoggingManager.Initialize(LogLevel.Warn);
 
             // Make logger
-            const string LOG_CATEGORY = "WARNTEST";
+            const string LOG_CATEGORY = "WarnTest";
             var logger = LoggingManager.GetLogger(LOG_CATEGORY);
 
             #endregion
@@ -206,7 +206,7 @@ namespace Extreal.Core.Logging.Test
             LoggingManager.Initialize(LogLevel.Error);
 
             // Make logger
-            const string LOG_CATEGORY = "ERRORTEST";
+            const string LOG_CATEGORY = "ErrorTest";
             var logger = LoggingManager.GetLogger(LOG_CATEGORY);
 
             #endregion
@@ -292,7 +292,7 @@ namespace Extreal.Core.Logging.Test
             LoggingManager.Initialize(writer: new AppLogWriter());
 
             // Make logger
-            const string LOG_CATEGORY = "WRITERTEST";
+            const string LOG_CATEGORY = "WriterTest";
             var logger = LoggingManager.GetLogger(LOG_CATEGORY);
 
             #endregion
@@ -356,7 +356,7 @@ namespace Extreal.Core.Logging.Test
             LoggingManager.Initialize();
 
             // Make logger
-            const string LOG_CATEGORY = "SAMECATEGORYTEST";
+            const string LOG_CATEGORY = "SameCategoryTest";
             var loggerA = LoggingManager.GetLogger(LOG_CATEGORY);
             var loggerB = LoggingManager.GetLogger(LOG_CATEGORY);
 
