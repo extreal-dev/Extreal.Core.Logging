@@ -5,61 +5,26 @@
     /// </summary>
     public class LogLevelLogOutputChecker : ILogOutputChecker
     {
-        private bool _isDebug = false;
-        private bool _isInfo = true;
-        private bool _isWarn = true;
-        private bool _isError = true;
+        private LogLevel _logLevel;
 
         /// <summary>
-        /// Initializes LogOutputChecker according to LogLevel.
+        /// Initializes LogOutputChecker.
         /// </summary>
-        /// <param name="logLevel">LogLevel used to initialize.</param>
+        /// <param name="logLevel">LogLevel to be set.</param>
         public void Initialize(LogLevel logLevel)
         {
-            _isDebug = logLevel <= LogLevel.Debug;
-            _isInfo = logLevel <= LogLevel.Info;
-            _isWarn = logLevel <= LogLevel.Warn;
-            _isError = logLevel <= LogLevel.Error;
+            _logLevel = logLevel;
         }
 
         /// <summary>
-        /// Checks if debug logs are output.
+        /// Checks if logs should be output.
         /// </summary>
+        /// <param name="logLevel">LogLevel used to check.</param>
         /// <param name="logCategory">Log category used to check.</param>
-        /// <returns>True if it is set to log debug, false otherwise.</returns>
-        public bool IsDebug(string logCategory)
+        /// <returns>True if logs should be output, false otherwise.</returns>
+        public bool IsOutput(LogLevel logLevel, string logCategory)
         {
-            return _isDebug;
-        }
-
-        /// <summary>
-        /// Checks if information logs are output.
-        /// </summary>
-        /// <param name="logCategory">Log category used to check.</param>
-        /// <returns>True if it is set to log information, false otherwise.</returns>
-        public bool IsInfo(string logCategory)
-        {
-            return _isInfo;
-        }
-
-        /// <summary>
-        /// Checks if warning logs are output.
-        /// </summary>
-        /// <param name="logCategory">Log category used to check.</param>
-        /// <returns>True if it is set to log warning, false otherwise.</returns>
-        public bool IsWarn(string logCategory)
-        {
-            return _isWarn;
-        }
-
-        /// <summary>
-        /// Checks if error logs are output.
-        /// </summary>
-        /// <param name="logCategory">Log category used to check.</param>
-        /// <returns>True if it is set to log error, false otherwise.</returns>
-        public bool IsError(string logCategory)
-        {
-            return _isError;
+            return _logLevel <= logLevel;
         }
     }
 }

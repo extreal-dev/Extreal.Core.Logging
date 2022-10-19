@@ -6,7 +6,7 @@ namespace Extreal.Core.Logging.Test
     public class LogOutputCheckerTest
     {
         [Test]
-        public void OutputCheck10kTimesWithin15Milliseconds()
+        public void OutputCheck10kTimesWithin10Milliseconds()
         {
             #region Settings
 
@@ -26,14 +26,14 @@ namespace Extreal.Core.Logging.Test
             // Log 10,000 times
             for (var i = 0; i < 10_000; i++)
             {
-                logger.IsDebug();
+                logger.IsOutput(LogLevel.Debug);
             }
 
             // Stop timer
             timer.Stop();
 
-            // Assert that execution time is within 15 milliseconds
-            Assert.Less(timer.ElapsedMilliseconds, 15);
+            // Assert that execution time is within 10 milliseconds
+            Assert.Less(timer.ElapsedMilliseconds, 10);
         }
     }
 }

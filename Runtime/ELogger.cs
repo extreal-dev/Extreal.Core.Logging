@@ -1,11 +1,12 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Extreal.Core.Logging
 {
     /// <summary>
     /// <para>Class for handling logs.</para>
-    /// Checks automatically using class implementing ILogOutputChecker if logs should be output before logs are output.
-    /// Logs are output using class implementing ILogWriter.
+    /// Checks automatically using ILogOutputChecker if logs should be output before logs are output.
+    /// Logs are output using ILogWriter.
     /// </summary>
     public class ELogger
     {
@@ -32,139 +33,44 @@ namespace Extreal.Core.Logging
         }
 
         /// <summary>
-        /// Logs debug.
+        /// <para>Logs message and exception.</para>
+        /// Logs exception in console of Unity Editor when ILogWriter throws one.
         /// </summary>
-        /// <param name="message">Message to log.</param>
-        public void LogDebug(string message)
-        {
-            if (IsDebug())
-            {
-                _writer.LogDebug(_logCategory, message);
-            }
-        }
-
-        /// <summary>
-        /// Logs debug with exception.
-        /// </summary>
+        /// <param name="logLevel">LogLevel used in logs</param>
         /// <param name="message">Message to log.</param>
         /// <param name="exception">Exception to log.</param>
-        public void LogDebug(string message, Exception exception)
+        public void Log(LogLevel logLevel, string message, Exception exception = null)
         {
-            if (IsDebug())
+            if (IsOutput(logLevel))
             {
-                _writer.LogDebug(_logCategory, message, exception);
+                try
+                {
+                    _writer.Log(logLevel, _logCategory, message, exception);
+                }
+                catch (Exception e)
+                {
+                    Debug.LogException(e);
+                }
             }
         }
 
         /// <summary>
-        /// Logs information with exception.
+        /// <para>Checks if logs should be output.</para>
+        /// Logs exception in console of Unity Editor when ILogOutputChecker throws one.
         /// </summary>
-        /// <param name="message">Message to log.</param>
-        public void LogInfo(string message)
+        /// <param name="logLevel">LogLevel used to check.</param>
+        /// <returns>True if logs should be output, false otherwise.</returns>
+        public bool IsOutput(LogLevel logLevel)
         {
-            if (IsInfo())
+            try
             {
-                _writer.LogInfo(_logCategory, message);
+                return _checker.IsOutput(logLevel, _logCategory);
             }
-        }
-
-        /// <summary>
-        /// Logs information with exception.
-        /// </summary>
-        /// <param name="message">Message to log.</param>
-        /// <param name="exception">Exception to log.</param>
-        public void LogInfo(string message, Exception exception)
-        {
-            if (IsInfo())
+            catch (Exception e)
             {
-                _writer.LogInfo(_logCategory, message, exception);
+                Debug.LogException(e);
             }
-        }
-
-        /// <summary>
-        /// Logs warning with exception.
-        /// </summary>
-        /// <param name="message">Message to log.</param>
-        public void LogWarn(string message)
-        {
-            if (IsWarn())
-            {
-                _writer.LogWarn(_logCategory, message);
-            }
-        }
-
-        /// <summary>
-        /// Logs warning with exception.
-        /// </summary>
-        /// <param name="message">Message to log.</param>
-        /// <param name="exception">Exception to log.</param>
-        public void LogWarn(string message, Exception exception)
-        {
-            if (IsWarn())
-            {
-                _writer.LogWarn(_logCategory, message, exception);
-            }
-        }
-
-        /// <summary>
-        /// Logs error with exception.
-        /// </summary>
-        /// <param name="message">Message to log.</param>
-        public void LogError(string message)
-        {
-            if (IsError())
-            {
-                _writer.LogError(_logCategory, message);
-            }
-        }
-
-        /// <summary>
-        /// Logs error with exception.
-        /// </summary>
-        /// <param name="message">Message to log.</param>
-        /// <param name="exception">Exception to log.</param>
-        public void LogError(string message, Exception exception)
-        {
-            if (IsError())
-            {
-                _writer.LogError(_logCategory, message, exception);
-            }
-        }
-
-        /// <summary>
-        /// Checks if debug logs are output.
-        /// </summary>
-        /// <returns>True if it is set to log debug, false otherwise.</returns>
-        public bool IsDebug()
-        {
-            return _checker.IsDebug(_logCategory);
-        }
-
-        /// <summary>
-        /// Checks if information logs are output.
-        /// </summary>
-        /// <returns>True if it is set to log information, false otherwise.</returns>
-        public bool IsInfo()
-        {
-            return _checker.IsInfo(_logCategory);
-        }
-
-        /// <summary>
-        /// Checks if warning logs are output.
-        /// </summary>
-        /// <returns>True if it is set to log warning, false otherwise.</returns>
-        public bool IsWarn()
-        {
-            return _checker.IsWarn(_logCategory);
-        }
-
-        /// <summary>
-        /// Checks if error logs are output.
-        /// </summary>
-        /// <returns>True if it is set to log error, false otherwise.</returns>
-        public bool IsError()
-        {
-            return _checker.IsError(_logCategory);
+            return false;
         }
     }
 }

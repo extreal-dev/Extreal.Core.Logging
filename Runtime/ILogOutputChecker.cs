@@ -1,42 +1,23 @@
 ﻿namespace Extreal.Core.Logging
 {
     /// <summary>
-    /// Interface for implementation checking if logs should be output according to LogLevel and log category.
+    /// <para>Interface for implementation checking if logs should be output according to LogLevel and log category.</para>
+    /// Implementation of this should not throw exceptions to avoid stopping main execution.
     /// </summary>
     public interface ILogOutputChecker
     {
         /// <summary>
-        /// Initializes LogOutputChecker according to LogLevel.
+        /// Initializes LogOutputChecker.
         /// </summary>
-        /// <param name="logLevel">LogLevel used to initialize.</param>
+        /// <param name="logLevel">LogLevel to be set.</param>
         void Initialize(LogLevel logLevel);
 
         /// <summary>
-        /// Checks if debug logs are output.
+        /// Checks if logs should be output.
         /// </summary>
+        /// <param name="logLevel">LogLevel used to check.</param>
         /// <param name="logCategory">Log category used to check.</param>
-        /// <returns>True if it is set to log debug, false otherwise.</returns>
-        bool IsDebug(string logCategory);
-
-        /// <summary>
-        /// Checks if information logs are output.
-        /// </summary>
-        /// <param name="logCategory">Log category used to check.</param>
-        /// <returns>True if it is set to log information, false otherwise.</returns>
-        bool IsInfo(string logCategory);
-
-        /// <summary>
-        /// Checks if warning logs are output.
-        /// </summary>
-        /// <param name="logCategory">Log category used to check.</param>
-        /// <returns>True if it is set to log warning, false otherwise.</returns>
-        bool IsWarn(string logCategory);
-
-        /// <summary>
-        /// Checks if error logs are output.
-        /// </summary>
-        /// <param name="logCategory">Log category used to check.</param>
-        /// <returns>True if it is set to log error, false otherwise.</returns>
-        bool IsError(string logCategory);
+        /// <returns>True if logs should be output, false otherwise.</returns>
+        bool IsOutput(LogLevel logLevel, string logCategory);
     }
 }

@@ -3,68 +3,18 @@
 namespace Extreal.Core.Logging
 {
     /// <summary>
-    /// Interface for implementation how to log.
+    /// <para>Interface for implementation how to log.</para>
+    /// Implementation of this should not throw exceptions to avoid stopping main execution.
     /// </summary>
     public interface ILogWriter
     {
         /// <summary>
-        /// Logs debug.
+        /// Logs message and exception.
         /// </summary>
-        /// <param name="logCategory">Category used in logs.</param>
-        /// <param name="message">Message to log.</param>
-        void LogDebug(string logCategory, string message);
-
-        /// <summary>
-        /// Logs debug with exception.
-        /// </summary>
+        /// <param name="logLevel">LogLevel used in logs.</param>
         /// <param name="logCategory">Category used in logs.</param>
         /// <param name="message">Message to log.</param>
         /// <param name="exception">Exception to log.</param>
-        void LogDebug(string logCategory, string message, Exception exception);
-
-        /// <summary>
-        /// Logs information.
-        /// </summary>
-        /// <param name="logCategory">Category used in logs.</param>
-        /// <param name="message">Message to log.</param>
-        void LogInfo(string logCategory, string message);
-
-        /// <summary>
-        /// Logs information with exception.
-        /// </summary>
-        /// <param name="logCategory">Category used in logs.</param>
-        /// <param name="message">Message to log.</param>
-        /// <param name="exception">Exception to log.</param>
-        void LogInfo(string logCategory, string message, Exception exception);
-
-        /// <summary>
-        /// Logs warning.
-        /// </summary>
-        /// <param name="logCategory">Category used in logs.</param>
-        /// <param name="message">Message to log.</param>
-        void LogWarn(string logCategory, string message);
-
-        /// <summary>
-        /// Logs warning with exception.
-        /// </summary>
-        /// <param name="logCategory">Category used in logs.</param>
-        /// <param name="message">Message to log.</param>
-        /// <param name="exception">Exception to log.</param>
-        void LogWarn(string logCategory, string message, Exception exception);
-
-        /// <summary>
-        /// Logs error.
-        /// </summary>
-        /// <param name="logCategory">Category used in logs.</param>
-        /// <param name="message">Message to log.</param>
-        void LogError(string logCategory, string message);
-
-        /// <summary>
-        /// Logs error with exception.
-        /// </summary>
-        /// <param name="logCategory">Category used in logs.</param>
-        /// <param name="message">Message to log.</param>
-        /// <param name="exception">Exception to log.</param>
-        void LogError(string logCategory, string message, Exception exception);
+        void Log(LogLevel logLevel, string logCategory, string message, Exception exception);
     }
 }

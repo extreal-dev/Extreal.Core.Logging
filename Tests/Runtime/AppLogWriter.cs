@@ -6,44 +6,30 @@ namespace Extreal.Core.Logging.Test
 {
     public class AppLogWriter : ILogWriter
     {
-        public void LogDebug(string logCategory, string message)
+        public void Log(LogLevel logLevel, string logCategory, string message, Exception exception)
         {
-            Debug.Log(LogFormat("o-o", logCategory, message));
-        }
+            switch (logLevel)
+            {
+                case LogLevel.Debug:
+                    Debug.Log(LogFormat("o-o", logCategory, message, exception));
+                    break;
 
-        public void LogDebug(string logCategory, string message, Exception exception)
-        {
-            Debug.Log(LogFormat("o-o", logCategory, message, exception));
-        }
+                case LogLevel.Info:
+                    Debug.Log(LogFormat("(^_^)", logCategory, message, exception));
+                    break;
 
-        public void LogInfo(string logCategory, string message)
-        {
-            Debug.Log(LogFormat("(^_^)", logCategory, message));
-        }
+                case LogLevel.Warn:
+                    Debug.LogWarning(LogFormat("(--;", logCategory, message, exception));
+                    break;
 
-        public void LogInfo(string logCategory, string message, Exception exception)
-        {
-            Debug.Log(LogFormat("(^_^)", logCategory, message, exception));
-        }
+                case LogLevel.Error:
+                    Debug.LogError(LogFormat("(*A*;", logCategory, message, exception));
+                    break;
 
-        public void LogWarn(string logCategory, string message)
-        {
-            Debug.LogWarning(LogFormat("(--;", logCategory, message));
-        }
-
-        public void LogWarn(string logCategory, string message, Exception exception)
-        {
-            Debug.LogWarning(LogFormat("(--;", logCategory, message, exception));
-        }
-
-        public void LogError(string logCategory, string message)
-        {
-            Debug.LogError(LogFormat("(*A*;", logCategory, message));
-        }
-
-        public void LogError(string logCategory, string message, Exception exception)
-        {
-            Debug.LogError(LogFormat("(*A*;", logCategory, message, exception));
+                default:
+                    Debug.LogException(new Exception("Unexpected Case"));
+                    break;
+            }
         }
 
         private string LogFormat(string logLevel, string logCategory, string message, Exception exception = null)

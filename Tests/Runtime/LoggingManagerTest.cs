@@ -37,35 +37,35 @@ namespace Extreal.Core.Logging.Test
 
             // Test to print debug
             var message = "Debug";
-            logger.LogDebug(message);
+            logger.Log(LogLevel.Debug, message);
             Assert.IsEmpty(UnityDebugTestUtil.LogText);
-            logger.LogDebug(message, _exception);
+            logger.Log(LogLevel.Debug, message, _exception);
             Assert.IsEmpty(UnityDebugTestUtil.LogText);
-            Assert.IsFalse(logger.IsDebug());
+            Assert.IsFalse(logger.IsOutput(LogLevel.Debug));
 
             // Test to print info
             message = "Info";
-            logger.LogInfo(message);
+            logger.Log(LogLevel.Info, message);
             LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] {message}");
-            logger.LogInfo(message, _exception);
+            logger.Log(LogLevel.Info, message, _exception);
             LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
-            Assert.IsTrue(logger.IsInfo());
+            Assert.IsTrue(logger.IsOutput(LogLevel.Info));
 
             // Test to print warn
             message = "Warn";
-            logger.LogWarn(message);
+            logger.Log(LogLevel.Warn, message);
             LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}");
-            logger.LogWarn(message, _exception);
+            logger.Log(LogLevel.Warn, message, _exception);
             LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
-            Assert.IsTrue(logger.IsWarn());
+            Assert.IsTrue(logger.IsOutput(LogLevel.Warn));
 
             // Test to print error
             message = "Error";
-            logger.LogError(message);
+            logger.Log(LogLevel.Error, message);
             LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}");
-            logger.LogError(message, _exception);
+            logger.Log(LogLevel.Error, message, _exception);
             LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
-            Assert.IsTrue(logger.IsError());
+            Assert.IsTrue(logger.IsOutput(LogLevel.Error));
         }
 
         [Test]
@@ -84,30 +84,30 @@ namespace Extreal.Core.Logging.Test
 
             // Test to print debug
             var message = "Debug";
-            logger.LogDebug(message);
+            logger.Log(LogLevel.Debug, message);
             LogAssert.Expect(LogType.Log, $"[{LogLevel.Debug}:{LOG_CATEGORY}] {message}");
-            logger.LogDebug(message, _exception);
+            logger.Log(LogLevel.Debug, message, _exception);
             LogAssert.Expect(LogType.Log, $"[{LogLevel.Debug}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
 
             // Test to print info
             message = "Info";
-            logger.LogInfo(message);
+            logger.Log(LogLevel.Info, message);
             LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] {message}");
-            logger.LogInfo(message, _exception);
+            logger.Log(LogLevel.Info, message, _exception);
             LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
 
             // Test to print warn
             message = "Warn";
-            logger.LogWarn(message);
+            logger.Log(LogLevel.Warn, message);
             LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}");
-            logger.LogWarn(message, _exception);
+            logger.Log(LogLevel.Warn, message, _exception);
             LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
 
             // Test to print error
             message = "Error";
-            logger.LogError(message);
+            logger.Log(LogLevel.Error, message);
             LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}");
-            logger.LogError(message, _exception);
+            logger.Log(LogLevel.Error, message, _exception);
             LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
         }
 
@@ -127,30 +127,30 @@ namespace Extreal.Core.Logging.Test
 
             // Test to print debug
             var message = "Debug";
-            logger.LogDebug(message);
+            logger.Log(LogLevel.Debug, message);
             Assert.IsEmpty(UnityDebugTestUtil.LogText);
-            logger.LogDebug(message, _exception);
+            logger.Log(LogLevel.Debug, message, _exception);
             Assert.IsEmpty(UnityDebugTestUtil.LogText);
 
             // Test to print info
             message = "Info";
-            logger.LogInfo(message);
+            logger.Log(LogLevel.Info, message);
             LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] {message}");
-            logger.LogInfo(message, _exception);
+            logger.Log(LogLevel.Info, message, _exception);
             LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
 
             // Test to print warn
             message = "Warn";
-            logger.LogWarn(message);
+            logger.Log(LogLevel.Warn, message);
             LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}");
-            logger.LogWarn(message, _exception);
+            logger.Log(LogLevel.Warn, message, _exception);
             LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
 
             // Test to print error
             message = "Error";
-            logger.LogError(message);
+            logger.Log(LogLevel.Error, message);
             LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}");
-            logger.LogError(message, _exception);
+            logger.Log(LogLevel.Error, message, _exception);
             LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
         }
 
@@ -170,30 +170,30 @@ namespace Extreal.Core.Logging.Test
 
             // Test to print debug
             var message = "Debug";
-            logger.LogDebug(message);
+            logger.Log(LogLevel.Debug, message);
             Assert.IsEmpty(UnityDebugTestUtil.LogText);
-            logger.LogDebug(message, _exception);
+            logger.Log(LogLevel.Debug, message, _exception);
             Assert.IsEmpty(UnityDebugTestUtil.LogText);
 
             // Test to print info
             message = "Info";
-            logger.LogInfo(message);
+            logger.Log(LogLevel.Info, message);
             Assert.IsEmpty(UnityDebugTestUtil.LogText);
-            logger.LogInfo(message, _exception);
+            logger.Log(LogLevel.Info, message, _exception);
             Assert.IsEmpty(UnityDebugTestUtil.LogText);
 
             // Test to print warn
             message = "Warn";
-            logger.LogWarn(message);
+            logger.Log(LogLevel.Warn, message);
             LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}");
-            logger.LogWarn(message, _exception);
+            logger.Log(LogLevel.Warn, message, _exception);
             LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
 
             // Test to print error
             message = "Error";
-            logger.LogError(message);
+            logger.Log(LogLevel.Error, message);
             LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}");
-            logger.LogError(message, _exception);
+            logger.Log(LogLevel.Error, message, _exception);
             LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
         }
 
@@ -213,30 +213,30 @@ namespace Extreal.Core.Logging.Test
 
             // Test to print debug
             var message = "Debug";
-            logger.LogDebug(message);
+            logger.Log(LogLevel.Debug, message);
             Assert.IsEmpty(UnityDebugTestUtil.LogText);
-            logger.LogDebug(message, _exception);
+            logger.Log(LogLevel.Debug, message, _exception);
             Assert.IsEmpty(UnityDebugTestUtil.LogText);
 
             // Test to print info
             message = "Info";
-            logger.LogInfo(message);
+            logger.Log(LogLevel.Info, message);
             Assert.IsEmpty(UnityDebugTestUtil.LogText);
-            logger.LogInfo(message, _exception);
+            logger.Log(LogLevel.Info, message, _exception);
             Assert.IsEmpty(UnityDebugTestUtil.LogText);
 
             // Test to print warn
             message = "Warn";
-            logger.LogWarn(message);
+            logger.Log(LogLevel.Warn, message);
             Assert.IsEmpty(UnityDebugTestUtil.LogText);
-            logger.LogWarn(message, _exception);
+            logger.Log(LogLevel.Warn, message, _exception);
             Assert.IsEmpty(UnityDebugTestUtil.LogText);
 
             // Test to print error
             message = "Error";
-            logger.LogError(message);
+            logger.Log(LogLevel.Error, message);
             LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}");
-            logger.LogError(message, _exception);
+            logger.Log(LogLevel.Error, message, _exception);
             LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
         }
 
@@ -256,35 +256,35 @@ namespace Extreal.Core.Logging.Test
 
             // Test to print debug
             var message = "Debug";
-            logger.LogDebug(message);
+            logger.Log(LogLevel.Debug, message);
             LogAssert.Expect(LogType.Log, $"[{LogLevel.Debug}:{LOG_CATEGORY}] {message}");
-            logger.LogDebug(message, _exception);
+            logger.Log(LogLevel.Debug, message, _exception);
             LogAssert.Expect(LogType.Log, $"[{LogLevel.Debug}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
-            Assert.IsTrue(logger.IsDebug());
+            Assert.IsTrue(logger.IsOutput(LogLevel.Debug));
 
             // Test to print info
             message = "Info";
-            logger.LogInfo(message);
+            logger.Log(LogLevel.Info, message);
             LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] {message}");
-            logger.LogInfo(message, _exception);
+            logger.Log(LogLevel.Info, message, _exception);
             LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
-            Assert.IsTrue(logger.IsInfo());
+            Assert.IsTrue(logger.IsOutput(LogLevel.Info));
 
             // Test to print warn
             message = "Warn";
-            logger.LogWarn(message);
+            logger.Log(LogLevel.Warn, message);
             LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}");
-            logger.LogWarn(message, _exception);
+            logger.Log(LogLevel.Warn, message, _exception);
             LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
-            Assert.IsTrue(logger.IsWarn());
+            Assert.IsTrue(logger.IsOutput(LogLevel.Warn));
 
             // Test to print error
             message = "Error";
-            logger.LogError(message);
+            logger.Log(LogLevel.Error, message);
             LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}");
-            logger.LogError(message, _exception);
+            logger.Log(LogLevel.Error, message, _exception);
             LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
-            Assert.IsTrue(logger.IsError());
+            Assert.IsTrue(logger.IsOutput(LogLevel.Error));
         }
 
         [Test]
@@ -296,23 +296,23 @@ namespace Extreal.Core.Logging.Test
             LoggingManager.Initialize(writer: new AppLogWriter());
 
             // Make logger
-            const string LOG_CATEGORY = "WriterTest";
+            const string LOG_CATEGORY = "ChangeWriterTest";
             var logger = LoggingManager.GetLogger(LOG_CATEGORY);
 
             #endregion
 
             // Test to print debug
             var message = "Debug";
-            logger.LogDebug(message);
+            logger.Log(LogLevel.Debug, message);
             Assert.IsEmpty(UnityDebugTestUtil.LogText);
-            logger.LogDebug(message, _exception);
+            logger.Log(LogLevel.Debug, message, _exception);
             Assert.IsEmpty(UnityDebugTestUtil.LogText);
 
             // Test to print info
             message = "Info";
-            logger.LogInfo(message);
+            logger.Log(LogLevel.Info, message);
             LogAssert.Expect(LogType.Log, $"(^_^) {LOG_CATEGORY}: {message}");
-            logger.LogInfo(message, _exception);
+            logger.Log(LogLevel.Info, message, _exception);
             LogAssert.Expect
             (
                 LogType.Log,
@@ -324,9 +324,9 @@ namespace Extreal.Core.Logging.Test
 
             // Test to print warn
             message = "Warn";
-            logger.LogWarn(message);
+            logger.Log(LogLevel.Warn, message);
             LogAssert.Expect(LogType.Warning, $"(--; {LOG_CATEGORY}: {message}");
-            logger.LogWarn(message, _exception);
+            logger.Log(LogLevel.Warn, message, _exception);
             LogAssert.Expect
             (
                 LogType.Warning,
@@ -338,9 +338,9 @@ namespace Extreal.Core.Logging.Test
 
             // Test to print error
             message = "Error";
-            logger.LogError(message);
+            logger.Log(LogLevel.Error, message);
             LogAssert.Expect(LogType.Error, $"(*A*; {LOG_CATEGORY}: {message}");
-            logger.LogError(message, _exception);
+            logger.Log(LogLevel.Error, message, _exception);
             LogAssert.Expect
             (
                 LogType.Error,
@@ -386,30 +386,30 @@ namespace Extreal.Core.Logging.Test
 
             // Test to print debug
             var message = "Debug";
-            logger.LogDebug(message);
+            logger.Log(LogLevel.Debug, message);
             Assert.IsEmpty(UnityDebugTestUtil.LogText);
-            logger.LogDebug(message, _exception);
+            logger.Log(LogLevel.Debug, message, _exception);
             Assert.IsEmpty(UnityDebugTestUtil.LogText);
 
             // Test to print info
             message = "Info";
-            logger.LogInfo(message);
+            logger.Log(LogLevel.Info, message);
             LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] {message}");
-            logger.LogInfo(message, _exception);
+            logger.Log(LogLevel.Info, message, _exception);
             LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
 
             // Test to print warn
             message = "Warn";
-            logger.LogWarn(message);
+            logger.Log(LogLevel.Warn, message);
             LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}");
-            logger.LogWarn(message, _exception);
+            logger.Log(LogLevel.Warn, message, _exception);
             LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
 
             // Test to print error
             message = "Error";
-            logger.LogError(message);
+            logger.Log(LogLevel.Error, message);
             LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}");
-            logger.LogError(message, _exception);
+            logger.Log(LogLevel.Error, message, _exception);
             LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
         }
 
@@ -430,30 +430,30 @@ namespace Extreal.Core.Logging.Test
 
             // Test to print debug
             var message = "Debug";
-            logger.LogDebug(message);
+            logger.Log(LogLevel.Debug, message);
             Assert.IsEmpty(UnityDebugTestUtil.LogText);
-            logger.LogDebug(message, _exception);
+            logger.Log(LogLevel.Debug, message, _exception);
             Assert.IsEmpty(UnityDebugTestUtil.LogText);
 
             // Test to print info
             message = "Info";
-            logger.LogInfo(message);
+            logger.Log(LogLevel.Info, message);
             LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] {message}");
-            logger.LogInfo(message, _exception);
+            logger.Log(LogLevel.Info, message, _exception);
             LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
 
             // Test to print warn
             message = "Warn";
-            logger.LogWarn(message);
+            logger.Log(LogLevel.Warn, message);
             LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}");
-            logger.LogWarn(message, _exception);
+            logger.Log(LogLevel.Warn, message, _exception);
             LogAssert.Expect(LogType.Warning, $"[{LogLevel.Warn}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
 
             // Test to print error
             message = "Error";
-            logger.LogError(message);
+            logger.Log(LogLevel.Error, message);
             LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}");
-            logger.LogError(message, _exception);
+            logger.Log(LogLevel.Error, message, _exception);
             LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{LOG_CATEGORY}] {message}\n----------\n{_exception}");
         }
 
@@ -463,43 +463,6 @@ namespace Extreal.Core.Logging.Test
             // Making logger throws ArgumentNullException exception
             const string LOG_CATEGORY = null;
             Assert.Throws<ArgumentNullException>(() => LoggingManager.GetLogger(LOG_CATEGORY));
-        }
-
-        [Test]
-        public void LogMessageIsNull()
-        {
-            #region settings
-
-            const string LOG_CATEGORY = "LogMessageNullTest";
-            var logger = LoggingManager.GetLogger(LOG_CATEGORY);
-
-            #endregion
-
-            // Test to print info
-            // Logs are output except message
-            const string Message = null;
-            logger.LogInfo(Message);
-            LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] ");
-            logger.LogInfo(Message, _exception);
-            LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] \n----------\n{_exception}");
-        }
-
-        [Test]
-        public void LogExceptionIsNull()
-        {
-            #region settings
-
-            const string LOG_CATEGORY = "LogExceptionNullTest";
-            var logger = LoggingManager.GetLogger(LOG_CATEGORY);
-
-            #endregion
-
-            // Test to print info
-            // Logs that are the same as ones with only message are output
-            const string Message = "Info";
-            const Exception Exception = null;
-            logger.LogInfo(Message, Exception);
-            LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] {Message}");
         }
     }
 }
