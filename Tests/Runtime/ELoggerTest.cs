@@ -81,7 +81,8 @@ namespace Extreal.Core.Logging.Test
 
             #endregion
 
-            // Test to print debug
+            // Test to print with undefined LogLevel
+            // Except is thrown
             const string Message = "Fatal";
             var undefinedLogLevel = Enum.Parse<LogLevel>("4");
             var expectedMessage = $"{nameof(Exception)}: Undefined LogLevel was input";
@@ -112,6 +113,8 @@ namespace Extreal.Core.Logging.Test
 
             #endregion
 
+            // Test using mock of ILogOutputChecker whose method named 'IsOutput' throws exception
+            // Exception logs are output in console of Unity Editor and main execution doesn't stop
             const string Message = "Info";
             var expectedMessage = $"{nameof(Exception)}: {_exception.Message}";
             logger.Log(LogLevel.Info, Message);
@@ -155,6 +158,8 @@ namespace Extreal.Core.Logging.Test
 
             #endregion
 
+            // Test using mock of ILogWriter whose method named 'Log' throws exception
+            // Exception logs are output in console of Unity Editor and main execution doesn't stop
             const string Message = "Info";
             var expectedMessage = $"{nameof(Exception)}: {_exception.Message}";
             logger.Log(LogLevel.Info, Message);
