@@ -10,7 +10,7 @@ namespace Extreal.Core.Logging
     {
         private static ILogWriter s_writer = new UnityDebugLogWriter();
         private static ILogOutputChecker s_checker = new LogLevelLogOutputChecker();
-        private static Dictionary<string, Logger> s_loggers = new Dictionary<string, Logger>();
+        private static Dictionary<string, ELogger> s_loggers = new Dictionary<string, ELogger>();
 
         /// <summary>
         /// Get Logger created with same category past if any.
@@ -18,7 +18,7 @@ namespace Extreal.Core.Logging
         /// </summary>
         /// <param name="logCategory">Category to log.</param>
         /// <returns>Logger with logCategory.</returns>
-        public static Logger GetLogger(string logCategory)
+        public static ELogger GetLogger(string logCategory)
         {
             if (logCategory == null)
             {
@@ -28,7 +28,7 @@ namespace Extreal.Core.Logging
             {
                 return s_loggers[logCategory];
             }
-            return s_loggers[logCategory] = new Logger(logCategory, s_writer, s_checker);
+            return s_loggers[logCategory] = new ELogger(logCategory, s_writer, s_checker);
         }
 
         /// <summary>

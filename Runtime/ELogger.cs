@@ -7,7 +7,7 @@ namespace Extreal.Core.Logging
     /// Checks automatically using class implementing ILogOutputChecker if logs should be output before logs are output.
     /// Logs are output using class implementing ILogWriter.
     /// </summary>
-    public class Logger
+    public class ELogger
     {
         private readonly ILogWriter _writer;
         private readonly ILogOutputChecker _checker;
@@ -19,7 +19,7 @@ namespace Extreal.Core.Logging
         /// <param name="logCategory">Category to log.</param>
         /// <param name="logWriter">Used that logs are output.</param>
         /// <param name="logOutputChecker">Used to check if logs are output according to LogLevel.</param>
-        internal Logger
+        internal ELogger
         (
             string logCategory,
             ILogWriter logWriter,
