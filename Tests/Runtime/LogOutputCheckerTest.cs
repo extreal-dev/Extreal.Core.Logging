@@ -32,7 +32,7 @@ namespace Extreal.Core.Logging.Test
             // Log 10,000 times
             for (var i = 0; i < 10_000; i++)
             {
-                logger.IsOutput(LogLevel.Debug);
+                logger.IsDebug();
             }
 
             // Stop timer

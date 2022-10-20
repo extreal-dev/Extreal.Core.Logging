@@ -1,8 +1,8 @@
-using System;
+﻿using System;
+using Moq;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
-using Moq;
 
 namespace Extreal.Core.Logging.Test
 {
@@ -13,14 +13,7 @@ namespace Extreal.Core.Logging.Test
         [SetUp]
         public void Initialize()
         {
-            UnityDebugTestUtil.StartLogReceive();
             LoggingManager.Initialize(writer: new UnityDebugLogWriter(), checker: new LogLevelLogOutputChecker());
-        }
-
-        [TearDown]
-        public void Dispose()
-        {
-            UnityDebugTestUtil.StopLogReceive();
         }
 
         [Test]
@@ -40,9 +33,9 @@ namespace Extreal.Core.Logging.Test
             // Test to print info
             // Logs are output except message
             const string Message = null;
-            logger.Log(LogLevel.Info, Message);
+            logger.LogInfo(Message);
             LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] ");
-            logger.Log(LogLevel.Info, Message, _exception);
+            logger.LogInfo(Message, _exception);
             LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] \n----------\n{_exception}");
         }
 
@@ -64,31 +57,8 @@ namespace Extreal.Core.Logging.Test
             // Logs that are the same as ones with only message are output
             const string Message = "Info";
             const Exception Exception = null;
-            logger.Log(LogLevel.Info, Message, Exception);
+            logger.LogInfo(Message, Exception);
             LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] {Message}");
-        }
-
-        [Test]
-        public void LogLevelIsUndefined()
-        {
-            #region Settings
-
-            // Initialize LoggingManager
-            LoggingManager.Initialize();
-
-            // Make logger
-            const string LOG_CATEGORY = "LogLevelUndefinedTest";
-            var logger = LoggingManager.GetLogger(LOG_CATEGORY);
-
-            #endregion
-
-            // Test to print with undefined LogLevel
-            // Except is thrown
-            const string Message = "Fatal";
-            var undefinedLogLevel = Enum.Parse<LogLevel>("4");
-            var expectedMessage = $"{nameof(Exception)}: Undefined LogLevel was input";
-            logger.Log(undefinedLogLevel, Message);
-            LogAssert.Expect(LogType.Exception, expectedMessage);
         }
 
         [Test]
@@ -118,9 +88,9 @@ namespace Extreal.Core.Logging.Test
             // Exception logs are output in console of Unity Editor and main execution doesn't stop
             const string Message = "Info";
             var expectedMessage = $"{nameof(Exception)}: {_exception.Message}";
-            logger.Log(LogLevel.Info, Message);
+            logger.LogInfo(Message);
             LogAssert.Expect(LogType.Exception, expectedMessage);
-            Assert.IsFalse(logger.IsOutput(LogLevel.Info));
+            Assert.IsFalse(logger.IsInfo());
             LogAssert.Expect(LogType.Exception, expectedMessage);
 
             #region VerifyMock
@@ -163,7 +133,7 @@ namespace Extreal.Core.Logging.Test
             // Exception logs are output in console of Unity Editor and main execution doesn't stop
             const string Message = "Info";
             var expectedMessage = $"{nameof(Exception)}: {_exception.Message}";
-            logger.Log(LogLevel.Info, Message);
+            logger.LogInfo(Message);
             Debug.Log(expectedMessage);
             LogAssert.Expect(LogType.Exception, expectedMessage);
 

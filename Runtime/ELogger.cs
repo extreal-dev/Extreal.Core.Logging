@@ -33,13 +33,82 @@ namespace Extreal.Core.Logging
         }
 
         /// <summary>
-        /// <para>Logs message and exception.</para>
-        /// Logs exception in console of Unity Editor when ILogWriter throws one.
+        /// Logs debug with/without exception.
         /// </summary>
-        /// <param name="logLevel">LogLevel used in logs</param>
         /// <param name="message">Message to log.</param>
         /// <param name="exception">Exception to log.</param>
-        public void Log(LogLevel logLevel, string message, Exception exception = null)
+        public void LogDebug(string message, Exception exception = null)
+        {
+            Log(LogLevel.Debug, message, exception);
+        }
+
+        /// <summary>
+        /// Logs information with/without exception.
+        /// </summary>
+        /// <param name="message">Message to log.</param>
+        /// <param name="exception">Exception to log.</param>
+        public void LogInfo(string message, Exception exception = null)
+        {
+            Log(LogLevel.Info, message, exception);
+        }
+
+        /// <summary>
+        /// Logs warning with/without exception.
+        /// </summary>
+        /// <param name="message">Message to log.</param>
+        /// <param name="exception">Exception to log.</param>
+        public void LogWarn(string message, Exception exception = null)
+        {
+            Log(LogLevel.Warn, message, exception);
+        }
+
+        /// <summary>
+        /// Logs error with/without exception.
+        /// </summary>
+        /// <param name="message">Message to log.</param>
+        /// <param name="exception">Exception to log.</param>
+        public void LogError(string message, Exception exception = null)
+        {
+            Log(LogLevel.Error, message, exception);
+        }
+
+        /// <summary>
+        /// Checks if debug logs should be output.
+        /// </summary>
+        /// <returns>True if it is set to log debug, false otherwise.</returns>
+        public bool IsDebug()
+        {
+            return IsOutput(LogLevel.Debug);
+        }
+
+        /// <summary>
+        /// Checks if information logs should be output.
+        /// </summary>
+        /// <returns>True if it is set to log information, false otherwise.</returns>
+        public bool IsInfo()
+        {
+            return IsOutput(LogLevel.Info);
+        }
+
+        /// <summary>
+        /// Checks if warning logs should be output.
+        /// </summary>
+        /// <returns>True if it is set to log warning, false otherwise.</returns>
+        public bool IsWarn()
+        {
+            return IsOutput(LogLevel.Warn);
+        }
+
+        /// <summary>
+        /// Checks if error logs should be output.
+        /// </summary>
+        /// <returns>True if it is set to log error, false otherwise.</returns>
+        public bool IsError()
+        {
+            return IsOutput(LogLevel.Error);
+        }
+
+        private void Log(LogLevel logLevel, string message, Exception exception = null)
         {
             if (IsOutput(logLevel))
             {
@@ -54,13 +123,7 @@ namespace Extreal.Core.Logging
             }
         }
 
-        /// <summary>
-        /// <para>Checks if logs should be output.</para>
-        /// Logs exception in console of Unity Editor when ILogOutputChecker throws one.
-        /// </summary>
-        /// <param name="logLevel">LogLevel used to check.</param>
-        /// <returns>True if logs should be output, false otherwise.</returns>
-        public bool IsOutput(LogLevel logLevel)
+        private bool IsOutput(LogLevel logLevel)
         {
             try
             {
