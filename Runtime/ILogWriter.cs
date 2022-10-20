@@ -15,6 +15,6 @@ namespace Extreal.Core.Logging
         /// <param name="logCategory">Category used in logs.</param>
         /// <param name="message">Message to log.</param>
         /// <param name="exception">Exception to log.</param>
-        void Log(LogLevel logLevel, string logCategory, string message, Exception exception);
+        void Log(LogLevel logLevel, string logCategory, string message, Exception exception = null);
     }
 }

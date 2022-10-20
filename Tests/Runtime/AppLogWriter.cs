@@ -6,7 +6,7 @@ namespace Extreal.Core.Logging.Test
 {
     public class AppLogWriter : ILogWriter
     {
-        public void Log(LogLevel logLevel, string logCategory, string message, Exception exception)
+        public void Log(LogLevel logLevel, string logCategory, string message, Exception exception = null)
         {
             switch (logLevel)
             {
