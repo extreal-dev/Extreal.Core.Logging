@@ -25,7 +25,7 @@ namespace Extreal.Core.Logging.Test
             const string Message = "Fatal";
             var undefinedLogLevel = Enum.Parse<LogLevel>("4");
             var expectedMessage = $"{nameof(Exception)}: Undefined LogLevel was input";
-            Assert.Throws<Exception>(() => writer.Log(undefinedLogLevel, LOG_CATEGORY, Message));
+            Assert.Throws<ArgumentOutOfRangeException>(() => writer.Log(undefinedLogLevel, LOG_CATEGORY, Message));
         }
     }
 }
