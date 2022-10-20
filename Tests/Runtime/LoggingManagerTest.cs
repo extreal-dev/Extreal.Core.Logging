@@ -349,6 +349,13 @@ namespace Extreal.Core.Logging.Test
                     + _exception
                     + "\n-------------------\n"
             );
+
+            // Test using undefined LogLevel as argument to 'Log' method
+            var undefinedLogLevel = Enum.Parse<LogLevel>("4");
+            message = "Fatal";
+            var expectedMessage = $"{nameof(Exception)}: Undefined LogLevel was input";
+            logger.Log(undefinedLogLevel, message);
+            LogAssert.Expect(LogType.Exception, expectedMessage);
         }
 
         [Test]

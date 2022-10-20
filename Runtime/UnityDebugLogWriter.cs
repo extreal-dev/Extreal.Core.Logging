@@ -34,8 +34,7 @@ namespace Extreal.Core.Logging
                     break;
 
                 default:
-                    Debug.LogException(new Exception("Undefined LogLevel was input"));
-                    break;
+                    throw new Exception("Undefined LogLevel was input");
             }
         }
 

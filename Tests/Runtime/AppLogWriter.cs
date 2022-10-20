@@ -27,8 +27,7 @@ namespace Extreal.Core.Logging.Test
                     break;
 
                 default:
-                    Debug.LogException(new Exception("Unexpected Case"));
-                    break;
+                    throw new Exception("Undefined LogLevel was input");
             }
         }
 
