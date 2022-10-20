@@ -42,8 +42,8 @@ namespace Extreal.Core.Logging
         /// <param name="writer">LogWriter to be set.</param>
         public static void Initialize(LogLevel logLevel = LogLevel.Info, ILogOutputChecker checker = null, ILogWriter writer = null)
         {
-            s_checker = checker ?? new LogLevelLogOutputChecker();
-            s_writer = writer ?? new UnityDebugLogWriter();
+            s_checker = checker ?? s_checker;
+            s_writer = writer ?? s_writer;
             s_checker.Initialize(logLevel);
             s_loggers.Clear();
         }

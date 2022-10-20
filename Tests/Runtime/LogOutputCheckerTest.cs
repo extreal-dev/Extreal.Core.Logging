@@ -5,6 +5,12 @@ namespace Extreal.Core.Logging.Test
 {
     public class LogOutputCheckerTest
     {
+        [SetUp]
+        public void Initialize()
+        {
+            LoggingManager.Initialize(writer: new UnityDebugLogWriter(), checker: new LogLevelLogOutputChecker());
+        }
+
         [Test]
         public void OutputCheck10kTimesWithin10Milliseconds()
         {

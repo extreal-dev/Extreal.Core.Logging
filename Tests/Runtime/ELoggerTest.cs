@@ -14,6 +14,7 @@ namespace Extreal.Core.Logging.Test
         public void Initialize()
         {
             UnityDebugTestUtil.StartLogReceive();
+            LoggingManager.Initialize(writer: new UnityDebugLogWriter(), checker: new LogLevelLogOutputChecker());
         }
 
         [TearDown]
