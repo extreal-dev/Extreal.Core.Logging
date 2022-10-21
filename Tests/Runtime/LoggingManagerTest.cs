@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
+using Extreal.Core.Logging.Test.Utility;
 
 namespace Extreal.Core.Logging.Test
 {

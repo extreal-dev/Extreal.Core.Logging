@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Extreal.Core.Logging.Test
+namespace Extreal.Core.Logging.Test.Utility
 {
     public static class UnityDebugTestUtil
     {
