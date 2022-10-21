@@ -1,0 +1,14 @@
+{
+    "name": "Extreal.Core.Logging.Test.Utility",
+    "rootNamespace": "Extreal.Core.Logging.Test.Utility",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
