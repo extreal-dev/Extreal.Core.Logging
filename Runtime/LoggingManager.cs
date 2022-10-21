@@ -10,7 +10,7 @@ namespace Extreal.Core.Logging
     {
         private static ILogWriter s_writer = new UnityDebugLogWriter();
         private static ILogOutputChecker s_checker = new LogLevelLogOutputChecker();
-        private static Dictionary<string, ELogger> s_loggers = new Dictionary<string, ELogger>();
+        private static readonly Dictionary<string, ELogger> s_loggers = new Dictionary<string, ELogger>();
 
         /// <summary>
         /// Get Logger created with same category past if any.
