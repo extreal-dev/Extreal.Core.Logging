@@ -4,7 +4,7 @@
   "displayName": "Extreal.Core.Logging",
   "unity": "2021.3",
   "author": {
-      "name": "TIS Inc."
+    "name": "TIS Inc."
   },
   "dependencies": {}
 }
