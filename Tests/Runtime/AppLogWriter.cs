@@ -27,7 +27,7 @@ namespace Extreal.Core.Logging.Test
                     break;
 
                 default:
-                    throw new ArgumentOutOfRangeException("Undefined LogLevel was input");
+                    throw new ArgumentOutOfRangeException(nameof(logLevel), "Undefined LogLevel was input");
             }
         }
 
