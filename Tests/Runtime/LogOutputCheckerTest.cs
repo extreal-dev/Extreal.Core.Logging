@@ -10,7 +10,7 @@ namespace Extreal.Core.Logging.Test
             => LoggingManager.Initialize(writer: new UnityDebugLogWriter(), checker: new LogLevelLogOutputChecker());
 
         [Test]
-        public void OutputCheck10kTimesWithin10Milliseconds()
+        public void OutputCheck10KTimesWithin10Milliseconds()
         {
             #region Settings
 
