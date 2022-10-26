@@ -16,6 +16,7 @@ namespace Extreal.Core.Logging
         /// Get Logger created with same category past if any.
         /// Otherwise get newly created Logger.
         /// </summary>
+        /// <exception cref="ArgumentNullException">If logCategory is null</exception>
         /// <param name="logCategory">Category to log.</param>
         /// <returns>Logger with logCategory.</returns>
         public static ELogger GetLogger(string logCategory)

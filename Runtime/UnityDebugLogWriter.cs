@@ -12,6 +12,7 @@ namespace Extreal.Core.Logging
         /// <summary>
         /// Logs message and exception.
         /// </summary>
+        /// <exception cref="ArgumentOutOfRangeException">If undefined LogLevel is input</exception>
         /// <param name="logLevel">LogLevel used in logs.</param>
         /// <param name="logCategory">Category used in logs.</param>
         /// <param name="message">Message to log.</param>
