@@ -5,8 +5,6 @@ namespace Extreal.Core.Logging.Test
 {
     public class UnityDebugLogWriterTest
     {
-        private readonly Exception exception = new Exception();
-
         [SetUp]
         public void Initialize()
             => LoggingManager.Initialize(writer: new UnityDebugLogWriter(), checker: new LogLevelLogOutputChecker());
@@ -21,8 +19,9 @@ namespace Extreal.Core.Logging.Test
             const string logCategory = "LogLevelUndefinedTest";
             const string message = "Fatal";
             var undefinedLogLevel = Enum.Parse<LogLevel>("4");
-            var expectedMessage = $"{nameof(Exception)}: Undefined LogLevel was input";
-            _ = Assert.Throws<ArgumentOutOfRangeException>(() => writer.Log(undefinedLogLevel, logCategory, message));
+            Assert.That(() => writer.Log(undefinedLogLevel, logCategory, message),
+                Throws.TypeOf<ArgumentOutOfRangeException>()
+                    .With.Message.Contains($"Undefined LogLevel was input"));
         }
     }
 }
