@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-
-namespace Extreal.Core.Logging.Test.Utility
+namespace Extreal.Core.Logging.Test
 {
+    using UnityEngine;
+
     public static class UnityDebugTestUtil
     {
         public static string LogText { get; private set; }
@@ -9,22 +9,16 @@ namespace Extreal.Core.Logging.Test.Utility
         public static void StartLogReceive()
         {
             Application.logMessageReceived += OnLogMessageReceived;
-            LogText = "";
+            LogText = string.Empty;
         }
 
         public static void StopLogReceive()
-        {
-            Application.logMessageReceived -= OnLogMessageReceived;
-        }
+            => Application.logMessageReceived -= OnLogMessageReceived;
 
         public static void ClearLogText()
-        {
-            LogText = "";
-        }
+            => LogText = string.Empty;
 
         private static void OnLogMessageReceived(string logText, string stackTrace, LogType logType)
-        {
-            LogText = logText;
-        }
+            => LogText = logText;
     }
 }

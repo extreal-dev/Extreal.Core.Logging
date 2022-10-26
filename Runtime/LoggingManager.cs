@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace Extreal.Core.Logging
@@ -8,14 +8,15 @@ namespace Extreal.Core.Logging
     /// </summary>
     public static class LoggingManager
     {
-        private static ILogWriter s_writer = new UnityDebugLogWriter();
-        private static ILogOutputChecker s_checker = new LogLevelLogOutputChecker();
-        private static readonly Dictionary<string, ELogger> s_loggers = new Dictionary<string, ELogger>();
+        private static ILogWriter writer = new UnityDebugLogWriter();
+        private static ILogOutputChecker checker = new LogLevelLogOutputChecker();
+        private static readonly Dictionary<string, ELogger> Loggers = new Dictionary<string, ELogger>();
 
         /// <summary>
         /// Get Logger created with same category past if any.
         /// Otherwise get newly created Logger.
         /// </summary>
+        /// <exception cref="ArgumentNullException">If logCategory is null</exception>
         /// <param name="logCategory">Category to log.</param>
         /// <returns>Logger with logCategory.</returns>
         public static ELogger GetLogger(string logCategory)
@@ -24,11 +25,11 @@ namespace Extreal.Core.Logging
             {
                 throw new ArgumentNullException(nameof(logCategory));
             }
-            if (s_loggers.ContainsKey(logCategory))
+            if (Loggers.ContainsKey(logCategory))
             {
-                return s_loggers[logCategory];
+                return Loggers[logCategory];
             }
-            return s_loggers[logCategory] = new ELogger(logCategory, s_writer, s_checker);
+            return Loggers[logCategory] = new ELogger(logCategory, writer, checker);
         }
 
         /// <summary>
@@ -42,10 +43,10 @@ namespace Extreal.Core.Logging
         /// <param name="writer">LogWriter to be set.</param>
         public static void Initialize(LogLevel logLevel = LogLevel.Info, ILogOutputChecker checker = null, ILogWriter writer = null)
         {
-            s_checker = checker ?? s_checker;
-            s_writer = writer ?? s_writer;
-            s_checker.Initialize(logLevel);
-            s_loggers.Clear();
+            LoggingManager.checker = checker ?? LoggingManager.checker;
+            LoggingManager.writer = writer ?? LoggingManager.writer;
+            LoggingManager.checker.Initialize(logLevel);
+            Loggers.Clear();
         }
     }
 }

@@ -1,18 +1,14 @@
-﻿namespace Extreal.Core.Logging.Test
+namespace Extreal.Core.Logging.Test
 {
     public class AppLogOutputChecker : ILogOutputChecker
     {
-        private LogLevel _logLevel;
+        private LogLevel logLevel;
 
         public void Initialize(LogLevel logLevel)
-        {
-            _logLevel = logLevel;
-        }
+            => this.logLevel = logLevel;
 
         public bool IsOutput(LogLevel logLevel, string logCategory)
-        {
-            return _logLevel <= logLevel
-                    || (logLevel == LogLevel.Debug && logCategory == "Debugger");
-        }
+            => this.logLevel <= logLevel
+                || (logLevel == LogLevel.Debug && logCategory == "Debugger");
     }
 }
