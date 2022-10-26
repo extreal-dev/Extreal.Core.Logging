@@ -1,10 +1,10 @@
+using System;
+using NUnit.Framework;
+using UnityEngine;
+using UnityEngine.TestTools;
+
 namespace Extreal.Core.Logging.Test
 {
-    using System;
-    using NUnit.Framework;
-    using UnityEngine;
-    using UnityEngine.TestTools;
-
     public class LoggingManagerTest
     {
         private Exception exception = new Exception();

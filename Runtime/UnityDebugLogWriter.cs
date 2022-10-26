@@ -1,9 +1,9 @@
+using System;
+using System.Text;
+using UnityEngine;
+
 namespace Extreal.Core.Logging
 {
-    using System;
-    using System.Text;
-    using UnityEngine;
-
     /// <summary>
     /// Class used by default for logging.
     /// </summary>

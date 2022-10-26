@@ -1,8 +1,8 @@
+using System.Diagnostics;
+using NUnit.Framework;
+
 namespace Extreal.Core.Logging.Test
 {
-    using System.Diagnostics;
-    using NUnit.Framework;
-
     public class LogOutputCheckerTest
     {
         [SetUp]

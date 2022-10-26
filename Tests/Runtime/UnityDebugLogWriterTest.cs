@@ -1,8 +1,8 @@
+using System;
+using NUnit.Framework;
+
 namespace Extreal.Core.Logging.Test
 {
-    using System;
-    using NUnit.Framework;
-
     public class UnityDebugLogWriterTest
     {
         private readonly Exception exception = new Exception();

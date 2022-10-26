@@ -1,8 +1,8 @@
+using System;
+using System.Collections.Generic;
+
 namespace Extreal.Core.Logging
 {
-    using System;
-    using System.Collections.Generic;
-
     /// <summary>
     /// Class for managing logs.
     /// </summary>

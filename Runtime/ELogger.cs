@@ -1,8 +1,8 @@
+using System;
+using UnityEngine;
+
 namespace Extreal.Core.Logging
 {
-    using System;
-    using UnityEngine;
-
     /// <summary>
     /// <para>Class for handling logs.</para>
     /// Checks automatically using ILogOutputChecker if logs should be output before logs are output.

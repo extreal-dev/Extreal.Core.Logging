@@ -1,9 +1,9 @@
+using System;
+using System.Text;
+using UnityEngine;
+
 namespace Extreal.Core.Logging.Test
 {
-    using System;
-    using System.Text;
-    using UnityEngine;
-
     public class AppLogWriter : ILogWriter
     {
         public void Log(LogLevel logLevel, string logCategory, string message, Exception exception = null)
