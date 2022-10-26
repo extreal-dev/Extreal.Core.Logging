@@ -1,20 +1,17 @@
-﻿using System;
-using Moq;
-using NUnit.Framework;
-using UnityEngine;
-using UnityEngine.TestTools;
-
 namespace Extreal.Core.Logging.Test
 {
+    using System;
+    using NUnit.Framework;
+    using UnityEngine;
+    using UnityEngine.TestTools;
+
     public class ELoggerTest
     {
-        private Exception _exception = new Exception();
+        private Exception exception = new Exception();
 
         [SetUp]
         public void Initialize()
-        {
-            LoggingManager.Initialize(writer: new UnityDebugLogWriter(), checker: new LogLevelLogOutputChecker());
-        }
+            => LoggingManager.Initialize(writer: new UnityDebugLogWriter(), checker: new LogLevelLogOutputChecker());
 
         [Test]
         public void LogMessageIsNull()
@@ -25,18 +22,18 @@ namespace Extreal.Core.Logging.Test
             LoggingManager.Initialize();
 
             // Make logger
-            const string LOG_CATEGORY = "LogMessageNullTest";
-            var logger = LoggingManager.GetLogger(LOG_CATEGORY);
+            const string logCategory = "LogMessageNullTest";
+            var logger = LoggingManager.GetLogger(logCategory);
 
             #endregion
 
             // Test to print info
             // Logs are output except message
-            const string Message = null;
-            logger.LogInfo(Message);
-            LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] ");
-            logger.LogInfo(Message, _exception);
-            LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] \n----------\n{_exception}");
+            const string message = null;
+            logger.LogInfo(message);
+            LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{logCategory}] ");
+            logger.LogInfo(message, exception);
+            LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{logCategory}] \n----------\n{exception}");
         }
 
         [Test]
@@ -48,106 +45,78 @@ namespace Extreal.Core.Logging.Test
             LoggingManager.Initialize();
 
             // Make logger
-            const string LOG_CATEGORY = "LogExceptionNullTest";
-            var logger = LoggingManager.GetLogger(LOG_CATEGORY);
+            const string logCategory = "LogExceptionNullTest";
+            var logger = LoggingManager.GetLogger(logCategory);
 
             #endregion
 
             // Test to print info
             // Logs that are the same as ones with only message are output
-            const string Message = "Info";
-            const Exception Exception = null;
-            logger.LogInfo(Message, Exception);
-            LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{LOG_CATEGORY}] {Message}");
+            const string message = "Info";
+            const Exception exception = null;
+            logger.LogInfo(message, exception);
+            LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{logCategory}] {message}");
         }
 
         [Test]
         public void LogOutputCheckerThrowsException()
         {
-            #region MakeMock
-
-            // Make mock of ILogOutputChecker
-            var mock = new Mock<ILogOutputChecker>();
-            mock.Setup(m => m.IsOutput(It.IsAny<LogLevel>(), It.IsAny<string>())).Throws(_exception);
-            var checkerMock = mock.Object;
-
-            #endregion
-
             #region Settings
 
             // Initialize LoggingManager
-            LoggingManager.Initialize(checker: checkerMock);
+            LoggingManager.Initialize(checker: new CheckerMock());
 
             // Make logger
-            const string LOG_CATEGORY = "CheckerThrowsExceptionTest";
-            var logger = LoggingManager.GetLogger(LOG_CATEGORY);
+            const string logCategory = "CheckerThrowsExceptionTest";
+            var logger = LoggingManager.GetLogger(logCategory);
 
             #endregion
 
             // Test using mock of ILogOutputChecker whose method named 'IsOutput' throws exception
             // Exception logs are output in console of Unity Editor and main execution doesn't stop
-            const string Message = "Info";
-            var expectedMessage = $"{nameof(Exception)}: {_exception.Message}";
-            logger.LogInfo(Message);
+            const string message = "Info";
+            var expectedMessage = $"{nameof(Exception)}: {exception.Message}";
+            logger.LogInfo(message);
             LogAssert.Expect(LogType.Exception, expectedMessage);
             Assert.IsFalse(logger.IsInfo());
             LogAssert.Expect(LogType.Exception, expectedMessage);
-
-            #region VerifyMock
-
-            mock.Verify(m => m.IsOutput(It.IsAny<LogLevel>(), It.IsAny<string>()), Times.Exactly(2));
-
-            #endregion
         }
 
         [Test]
         public void LogWriterThrowsException()
         {
-            #region MakeMock
-
-            // Make mock of ILogWriter
-            var mock = new Mock<ILogWriter>();
-            mock
-                .Setup(m => m.Log(
-                    It.IsAny<LogLevel>(),
-                    It.IsAny<string>(),
-                    It.IsAny<string>(),
-                    It.IsAny<Exception>()))
-                .Throws(_exception);
-            var writerMock = mock.Object;
-
-            #endregion
-
             #region Settings
 
             // Initialize LoggingManager
-            LoggingManager.Initialize(writer: writerMock);
+            LoggingManager.Initialize(writer: new WriterMock());
 
             // Make logger
-            const string LOG_CATEGORY = "CheckerThrowsExceptionTest";
-            var logger = LoggingManager.GetLogger(LOG_CATEGORY);
+            const string logCategory = "CheckerThrowsExceptionTest";
+            var logger = LoggingManager.GetLogger(logCategory);
 
             #endregion
 
             // Test using mock of ILogWriter whose method named 'Log' throws exception
             // Exception logs are output in console of Unity Editor and main execution doesn't stop
-            const string Message = "Info";
-            var expectedMessage = $"{nameof(Exception)}: {_exception.Message}";
-            logger.LogInfo(Message);
+            const string message = "Info";
+            var expectedMessage = $"{nameof(Exception)}: {exception.Message}";
+            logger.LogInfo(message);
             Debug.Log(expectedMessage);
             LogAssert.Expect(LogType.Exception, expectedMessage);
-
-            #region VerifyMock
-
-            mock.Verify(
-                m => m.Log(
-                    It.IsAny<LogLevel>(),
-                    It.IsAny<string>(),
-                    It.IsAny<string>(),
-                    It.IsAny<Exception>()),
-                Times.Once());
-
-            #endregion
         }
+    }
+
+    public class CheckerMock : ILogOutputChecker
+    {
+        public void Initialize(LogLevel logLevel) { }
+
+        public bool IsOutput(LogLevel logLevel, string logCategory)
+            => throw new Exception();
+    }
+
+    public class WriterMock : ILogWriter
+    {
+        public void Log(LogLevel logLevel, string logCategory, string message, Exception exception = null)
+            => throw new Exception();
     }
 }

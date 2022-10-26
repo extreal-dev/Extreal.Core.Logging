@@ -1,7 +1,7 @@
-﻿using System;
-
 namespace Extreal.Core.Logging
 {
+    using System;
+
     /// <summary>
     /// <para>Interface for implementation how to log.</para>
     /// Implementation of this should not throw exceptions to avoid stopping main execution.

@@ -1,4 +1,4 @@
-﻿namespace Extreal.Core.Logging
+namespace Extreal.Core.Logging
 {
     /// <summary>
     /// Enum for handling log levels.

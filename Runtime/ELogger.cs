@@ -1,8 +1,8 @@
-﻿using System;
-using UnityEngine;
-
 namespace Extreal.Core.Logging
 {
+    using System;
+    using UnityEngine;
+
     /// <summary>
     /// <para>Class for handling logs.</para>
     /// Checks automatically using ILogOutputChecker if logs should be output before logs are output.
@@ -10,9 +10,9 @@ namespace Extreal.Core.Logging
     /// </summary>
     public class ELogger
     {
-        private readonly ILogWriter _writer;
-        private readonly ILogOutputChecker _checker;
-        private readonly string _logCategory;
+        private readonly ILogWriter writer;
+        private readonly ILogOutputChecker checker;
+        private readonly string logCategory;
 
         /// <summary>
         /// Creates a new Logger with given logCategory, logWriter and logOutputChecker.
@@ -27,9 +27,9 @@ namespace Extreal.Core.Logging
             ILogOutputChecker logOutputChecker
         )
         {
-            _logCategory = logCategory;
-            _writer = logWriter;
-            _checker = logOutputChecker;
+            this.logCategory = logCategory;
+            writer = logWriter;
+            checker = logOutputChecker;
         }
 
         /// <summary>
@@ -38,9 +38,7 @@ namespace Extreal.Core.Logging
         /// <param name="message">Message to log.</param>
         /// <param name="exception">Exception to log.</param>
         public void LogDebug(string message, Exception exception = null)
-        {
-            Log(LogLevel.Debug, message, exception);
-        }
+            => Log(LogLevel.Debug, message, exception);
 
         /// <summary>
         /// Logs information with/without exception.
@@ -48,9 +46,7 @@ namespace Extreal.Core.Logging
         /// <param name="message">Message to log.</param>
         /// <param name="exception">Exception to log.</param>
         public void LogInfo(string message, Exception exception = null)
-        {
-            Log(LogLevel.Info, message, exception);
-        }
+            => Log(LogLevel.Info, message, exception);
 
         /// <summary>
         /// Logs warning with/without exception.
@@ -58,9 +54,7 @@ namespace Extreal.Core.Logging
         /// <param name="message">Message to log.</param>
         /// <param name="exception">Exception to log.</param>
         public void LogWarn(string message, Exception exception = null)
-        {
-            Log(LogLevel.Warn, message, exception);
-        }
+            => Log(LogLevel.Warn, message, exception);
 
         /// <summary>
         /// Logs error with/without exception.
@@ -68,45 +62,35 @@ namespace Extreal.Core.Logging
         /// <param name="message">Message to log.</param>
         /// <param name="exception">Exception to log.</param>
         public void LogError(string message, Exception exception = null)
-        {
-            Log(LogLevel.Error, message, exception);
-        }
+            => Log(LogLevel.Error, message, exception);
 
         /// <summary>
         /// Checks if debug logs should be output.
         /// </summary>
         /// <returns>True if it is set to log debug, false otherwise.</returns>
         public bool IsDebug()
-        {
-            return IsOutput(LogLevel.Debug);
-        }
+            => IsOutput(LogLevel.Debug);
 
         /// <summary>
         /// Checks if information logs should be output.
         /// </summary>
         /// <returns>True if it is set to log information, false otherwise.</returns>
         public bool IsInfo()
-        {
-            return IsOutput(LogLevel.Info);
-        }
+            => IsOutput(LogLevel.Info);
 
         /// <summary>
         /// Checks if warning logs should be output.
         /// </summary>
         /// <returns>True if it is set to log warning, false otherwise.</returns>
         public bool IsWarn()
-        {
-            return IsOutput(LogLevel.Warn);
-        }
+            => IsOutput(LogLevel.Warn);
 
         /// <summary>
         /// Checks if error logs should be output.
         /// </summary>
         /// <returns>True if it is set to log error, false otherwise.</returns>
         public bool IsError()
-        {
-            return IsOutput(LogLevel.Error);
-        }
+            => IsOutput(LogLevel.Error);
 
         private void Log(LogLevel logLevel, string message, Exception exception = null)
         {
@@ -114,7 +98,7 @@ namespace Extreal.Core.Logging
             {
                 try
                 {
-                    _writer.Log(logLevel, _logCategory, message, exception);
+                    writer.Log(logLevel, logCategory, message, exception);
                 }
                 catch (Exception e)
                 {
@@ -127,7 +111,7 @@ namespace Extreal.Core.Logging
         {
             try
             {
-                return _checker.IsOutput(logLevel, _logCategory);
+                return checker.IsOutput(logLevel, logCategory);
             }
             catch (Exception e)
             {

@@ -1,15 +1,13 @@
-﻿using System.Diagnostics;
-using NUnit.Framework;
-
 namespace Extreal.Core.Logging.Test
 {
+    using System.Diagnostics;
+    using NUnit.Framework;
+
     public class LogOutputCheckerTest
     {
         [SetUp]
         public void Initialize()
-        {
-            LoggingManager.Initialize(writer: new UnityDebugLogWriter(), checker: new LogLevelLogOutputChecker());
-        }
+            => LoggingManager.Initialize(writer: new UnityDebugLogWriter(), checker: new LogLevelLogOutputChecker());
 
         [Test]
         public void OutputCheck10kTimesWithin10Milliseconds()
@@ -17,11 +15,11 @@ namespace Extreal.Core.Logging.Test
             #region Settings
 
             // Change LogLevel
-            const string LOG_CATEGORY = "TimeTest";
+            const string logCategory = "TimeTest";
             LoggingManager.Initialize(LogLevel.Debug);
 
             // Make logger
-            var logger = LoggingManager.GetLogger(LOG_CATEGORY);
+            var logger = LoggingManager.GetLogger(logCategory);
 
             #endregion
 
@@ -32,7 +30,7 @@ namespace Extreal.Core.Logging.Test
             // Log 10,000 times
             for (var i = 0; i < 10_000; i++)
             {
-                logger.IsDebug();
+                _ = logger.IsDebug();
             }
 
             // Stop timer

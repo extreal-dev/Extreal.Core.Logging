@@ -1,9 +1,9 @@
-﻿using System;
-using System.Text;
-using UnityEngine;
-
 namespace Extreal.Core.Logging
 {
+    using System;
+    using System.Text;
+    using UnityEngine;
+
     /// <summary>
     /// Class used by default for logging.
     /// </summary>
@@ -22,26 +22,31 @@ namespace Extreal.Core.Logging
             {
                 case LogLevel.Debug:
                 case LogLevel.Info:
+                {
                     Debug.Log(LogFormat(logCategory, logLevel, message, exception));
                     break;
-
+                }
                 case LogLevel.Warn:
+                {
                     Debug.LogWarning(LogFormat(logCategory, logLevel, message, exception));
                     break;
-
+                }
                 case LogLevel.Error:
+                {
                     Debug.LogError(LogFormat(logCategory, logLevel, message, exception));
                     break;
-
+                }
                 default:
+                {
                     throw new ArgumentOutOfRangeException(nameof(logLevel), "Undefined LogLevel was input");
+                }
             }
         }
 
         private string LogFormat(string logCategory, LogLevel logLevel, string message, Exception exception = null)
         {
             var stringBuilder = new StringBuilder();
-            stringBuilder
+            _ = stringBuilder
                 .Append("[")
                 .Append(logLevel)
                 .Append(":")
@@ -50,7 +55,7 @@ namespace Extreal.Core.Logging
                 .Append(message);
             if (exception != null)
             {
-                stringBuilder.Append("\n----------\n").Append(exception);
+                _ = stringBuilder.Append("\n----------\n").Append(exception);
             }
             return stringBuilder.ToString();
         }
