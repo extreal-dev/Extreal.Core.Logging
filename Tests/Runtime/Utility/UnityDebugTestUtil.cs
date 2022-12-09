@@ -1,7 +1,7 @@
+using UnityEngine;
+
 namespace Extreal.Core.Logging.Test
 {
-    using UnityEngine;
-
     public static class UnityDebugTestUtil
     {
         public static string LogText { get; private set; }
