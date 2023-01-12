@@ -1,0 +1,28 @@
+name: Check analyzer existence
+
+on:
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  check-analyzer-existence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Check analyzer existence
+        run: |
+          check () {
+            result=`cat $1 | grep Analyzer`
+            if [ ${#result} -ne 0 ]; then
+              echo -e "\e[31m Error: '$1' includes the reference to Analyzer\e[m"
+              exit 1
+            fi
+          }
+          repo_name=${GITHUB_REPOSITORY#${GITHUB_REPOSITORY_OWNER}/}
+          if [ -f Runtime/${repo_name}.asmdef ]; then
+            check Runtime/${repo_name}.asmdef
+          fi
+          if [ -f Tests/Runtime/${repo_name}.Test.asmdef ]; then
+            check Tests/Runtime/${repo_name}.Test.asmdef
+          fi
