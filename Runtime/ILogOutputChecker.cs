@@ -1,4 +1,4 @@
-namespace Extreal.Core.Logging
+﻿namespace Extreal.Core.Logging
 {
     /// <summary>
     /// <para>Interface for implementation checking if logs should be output according to LogLevel and log category.</para>
