@@ -1,4 +1,4 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using NUnit.Framework;
 
 namespace Extreal.Core.Logging.Test

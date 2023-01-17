@@ -1,4 +1,4 @@
-namespace Extreal.Core.Logging.Test
+﻿namespace Extreal.Core.Logging.Test
 {
     public class AppLogOutputChecker : ILogOutputChecker
     {

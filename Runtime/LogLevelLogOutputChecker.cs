@@ -1,4 +1,4 @@
-namespace Extreal.Core.Logging
+﻿namespace Extreal.Core.Logging
 {
     /// <summary>
     /// Class used by default to check if logs should be output.
