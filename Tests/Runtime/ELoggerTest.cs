@@ -7,7 +7,7 @@ namespace Extreal.Core.Logging.Test
 {
     public class ELoggerTest
     {
-        private Exception exception = new Exception();
+        private readonly Exception exception = new Exception();
 
         [SetUp]
         public void Initialize()
@@ -53,8 +53,7 @@ namespace Extreal.Core.Logging.Test
             // Test to print info
             // Logs that are the same as ones with only message are output
             const string message = "Info";
-            const Exception nullException = null;
-            logger.LogInfo(message, nullException);
+            logger.LogInfo(message);
             LogAssert.Expect(LogType.Log, $"[{LogLevel.Info}:{logCategory}] {message}");
         }
 

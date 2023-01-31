@@ -7,7 +7,7 @@ namespace Extreal.Core.Logging.Test
 {
     public class LoggingManagerTest
     {
-        private Exception exception = new Exception();
+        private readonly Exception exception = new Exception();
 
         [SetUp]
         public void Initialize()

@@ -44,7 +44,7 @@ namespace Extreal.Core.Logging
             }
         }
 
-        private string LogFormat(string logCategory, LogLevel logLevel, string message, Exception exception = null)
+        private static string LogFormat(string logCategory, LogLevel logLevel, string message, Exception exception = null)
         {
             var stringBuilder = new StringBuilder();
             _ = stringBuilder
