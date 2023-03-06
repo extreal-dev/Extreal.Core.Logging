@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using UnityEngine;
 
@@ -9,6 +11,16 @@ namespace Extreal.Core.Logging
     /// </summary>
     public class UnityDebugLogWriter : ILogWriter
     {
+        private readonly IDictionary<string, UnityDebugLogFormat> formats;
+
+        /// <summary>
+        /// Creates UnityDebugLogWriter.
+        /// </summary>
+        /// <param name="formats">Log format.</param>
+        [SuppressMessage("Usage", "CC0057")]
+        public UnityDebugLogWriter(IDictionary<string, UnityDebugLogFormat> formats = null)
+            => this.formats = formats;
+
         /// <summary>
         /// Logs message and exception.
         /// </summary>
@@ -44,9 +56,15 @@ namespace Extreal.Core.Logging
             }
         }
 
-        private static string LogFormat(string logCategory, LogLevel logLevel, string message, Exception exception = null)
+        private string LogFormat(string logCategory, LogLevel logLevel, string message, Exception exception = null)
         {
             var stringBuilder = new StringBuilder();
+            UnityDebugLogFormat format = null;
+            formats?.TryGetValue(logCategory, out format);
+            if (format != null)
+            {
+                stringBuilder.Append("<color=").Append(format.ColorRGB).Append(">");
+            }
             _ = stringBuilder
                 .Append("[")
                 .Append(logLevel)
@@ -57,6 +75,10 @@ namespace Extreal.Core.Logging
             if (exception != null)
             {
                 _ = stringBuilder.Append("\n----------\n").Append(exception);
+            }
+            if (format != null)
+            {
+                stringBuilder.Append("</color>");
             }
             return stringBuilder.ToString();
         }

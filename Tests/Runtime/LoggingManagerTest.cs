@@ -350,6 +350,75 @@ namespace Extreal.Core.Logging.Test
         }
 
         [Test]
+        public void CategoryDecorationIsNull()
+        {
+            LogAssert.Expect(LogType.Log, $"[Info:test] dummy");
+            LogAssert.Expect(LogType.Log, $"[Info:test1] dummy");
+            LogAssert.Expect(LogType.Log, $"[Info:test2] dummy");
+
+            var writer = new UnityDebugLogWriter(null);
+            LoggingManager.Initialize(writer: writer);
+
+            var test = LoggingManager.GetLogger("test");
+            var test1 = LoggingManager.GetLogger("test1");
+            var test2 = LoggingManager.GetLogger("test2");
+
+            test.LogInfo("dummy");
+            test1.LogInfo("dummy");
+            test2.LogInfo("dummy");
+
+            LogAssert.NoUnexpectedReceived();
+        }
+
+        [Test]
+        public void CategoryDecorationIsEmpty()
+        {
+            LogAssert.Expect(LogType.Log, $"[Info:test] dummy");
+            LogAssert.Expect(LogType.Log, $"[Info:test1] dummy");
+            LogAssert.Expect(LogType.Log, $"[Info:test2] dummy");
+
+            var writer = new UnityDebugLogWriter(new Dictionary<string, UnityDebugLogFormat>());
+            LoggingManager.Initialize(writer: writer);
+
+            var test = LoggingManager.GetLogger("test");
+            var test1 = LoggingManager.GetLogger("test1");
+            var test2 = LoggingManager.GetLogger("test2");
+
+            test.LogInfo("dummy");
+            test1.LogInfo("dummy");
+            test2.LogInfo("dummy");
+
+            LogAssert.NoUnexpectedReceived();
+        }
+
+        [Test]
+        public void CategoryDecoration()
+        {
+            LogAssert.Expect(LogType.Log, $"<color=#0000FF>[Info:test] dummy</color>");
+            LogAssert.Expect(LogType.Log, $"[Info:test1] dummy");
+            LogAssert.Expect(LogType.Log, $"<color=#000000>[Info:test2] dummy</color>");
+
+            var format = new UnityDebugLogFormat("test", Color.blue);
+            var format2 = new UnityDebugLogFormat("test2");
+            var formats = new Dictionary<string, UnityDebugLogFormat>
+            {
+                { format.Category, format }, { format2.Category, format2 }
+            };
+            var writer = new UnityDebugLogWriter(formats);
+            LoggingManager.Initialize(writer: writer);
+
+            var test = LoggingManager.GetLogger("test");
+            var test1 = LoggingManager.GetLogger("test1");
+            var test2 = LoggingManager.GetLogger("test2");
+
+            test.LogInfo("dummy");
+            test1.LogInfo("dummy");
+            test2.LogInfo("dummy");
+
+            LogAssert.NoUnexpectedReceived();
+        }
+
+        [Test]
         public void ChangeLogWriter()
         {
             #region Settings
