@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -237,6 +238,68 @@ namespace Extreal.Core.Logging.Test
             LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{logCategory}] {message}");
             logger.LogError(message, exception);
             LogAssert.Expect(LogType.Error, $"[{LogLevel.Error}:{logCategory}] {message}\n----------\n{exception}");
+        }
+
+        [Test]
+        public void CategoryFilterIsNull()
+        {
+            LogAssert.Expect(LogType.Log, $"[Info:test] dummy");
+            LogAssert.Expect(LogType.Log, $"[Info:test1] dummy");
+            LogAssert.Expect(LogType.Log, $"[Info:test2] dummy");
+
+            var checker = new LogLevelLogOutputChecker(null);
+            LoggingManager.Initialize(checker: checker);
+
+            var test = LoggingManager.GetLogger("test");
+            var test1 = LoggingManager.GetLogger("test1");
+            var test2 = LoggingManager.GetLogger("test2");
+
+            test.LogInfo("dummy");
+            test1.LogInfo("dummy");
+            test2.LogInfo("dummy");
+
+            LogAssert.NoUnexpectedReceived();
+        }
+
+        [Test]
+        public void CategoryFilterIsEmpty()
+        {
+            LogAssert.Expect(LogType.Log, $"[Info:test] dummy");
+            LogAssert.Expect(LogType.Log, $"[Info:test1] dummy");
+            LogAssert.Expect(LogType.Log, $"[Info:test2] dummy");
+
+            var checker = new LogLevelLogOutputChecker(new List<string>());
+            LoggingManager.Initialize(checker: checker);
+
+            var test = LoggingManager.GetLogger("test");
+            var test1 = LoggingManager.GetLogger("test1");
+            var test2 = LoggingManager.GetLogger("test2");
+
+            test.LogInfo("dummy");
+            test1.LogInfo("dummy");
+            test2.LogInfo("dummy");
+
+            LogAssert.NoUnexpectedReceived();
+        }
+
+        [Test]
+        public void CategoryFilter()
+        {
+            LogAssert.Expect(LogType.Log, $"[Info:test] dummy");
+            LogAssert.Expect(LogType.Log, $"[Info:test2] dummy");
+
+            var checker = new LogLevelLogOutputChecker(new List<string> {"test", "test2"});
+            LoggingManager.Initialize(checker: checker);
+
+            var test = LoggingManager.GetLogger("test");
+            var test1 = LoggingManager.GetLogger("test1");
+            var test2 = LoggingManager.GetLogger("test2");
+
+            test.LogInfo("dummy");
+            test1.LogInfo("dummy");
+            test2.LogInfo("dummy");
+
+            LogAssert.NoUnexpectedReceived();
         }
 
         [Test]
