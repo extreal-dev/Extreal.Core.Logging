@@ -12,7 +12,7 @@ namespace Extreal.Core.Logging
     /// </summary>
     public class UnityDebugLogWriter : ILogWriter
     {
-        private readonly IDictionary<string, UnityDebugLogFormat> formats;
+        private readonly IDictionary<string, string> formats;
 
         /// <summary>
         /// Creates UnityDebugLogWriter.
@@ -20,7 +20,7 @@ namespace Extreal.Core.Logging
         /// <param name="formats">Log format.</param>
         [SuppressMessage("Usage", "CC0057")]
         public UnityDebugLogWriter(ICollection<UnityDebugLogFormat> formats = null)
-            => this.formats = formats?.ToDictionary(format => format.Category, format => format);
+            => this.formats = formats?.ToDictionary(format => format.Category, format => format.ColorRGB);
 
         /// <summary>
         /// Logs message and exception.
@@ -60,11 +60,11 @@ namespace Extreal.Core.Logging
         private string LogFormat(string logCategory, LogLevel logLevel, string message, Exception exception = null)
         {
             var stringBuilder = new StringBuilder();
-            UnityDebugLogFormat format = null;
-            formats?.TryGetValue(logCategory, out format);
-            if (format != null)
+            string colorRGB = null;
+            formats?.TryGetValue(logCategory, out colorRGB);
+            if (colorRGB != null)
             {
-                stringBuilder.Append("<color=").Append(format.ColorRGB).Append(">");
+                stringBuilder.Append("<color=").Append(colorRGB).Append(">");
             }
             _ = stringBuilder
                 .Append("[")
@@ -77,7 +77,7 @@ namespace Extreal.Core.Logging
             {
                 _ = stringBuilder.Append("\n----------\n").Append(exception);
             }
-            if (format != null)
+            if (colorRGB != null)
             {
                 stringBuilder.Append("</color>");
             }
