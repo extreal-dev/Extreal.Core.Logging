@@ -377,7 +377,7 @@ namespace Extreal.Core.Logging.Test
             LogAssert.Expect(LogType.Log, $"[Info:test1] dummy");
             LogAssert.Expect(LogType.Log, $"[Info:test2] dummy");
 
-            var writer = new UnityDebugLogWriter(new Dictionary<string, UnityDebugLogFormat>());
+            var writer = new UnityDebugLogWriter(new List<UnityDebugLogFormat>());
             LoggingManager.Initialize(writer: writer);
 
             var test = LoggingManager.GetLogger("test");
@@ -400,11 +400,7 @@ namespace Extreal.Core.Logging.Test
 
             var format = new UnityDebugLogFormat("test", Color.blue);
             var format2 = new UnityDebugLogFormat("test2");
-            var formats = new Dictionary<string, UnityDebugLogFormat>
-            {
-                { format.Category, format }, { format2.Category, format2 }
-            };
-            var writer = new UnityDebugLogWriter(formats);
+            var writer = new UnityDebugLogWriter(new List<UnityDebugLogFormat> { format, format2 });
             LoggingManager.Initialize(writer: writer);
 
             var test = LoggingManager.GetLogger("test");

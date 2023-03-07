@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text;
 using UnityEngine;
 
@@ -18,8 +19,8 @@ namespace Extreal.Core.Logging
         /// </summary>
         /// <param name="formats">Log format.</param>
         [SuppressMessage("Usage", "CC0057")]
-        public UnityDebugLogWriter(IDictionary<string, UnityDebugLogFormat> formats = null)
-            => this.formats = formats;
+        public UnityDebugLogWriter(ICollection<UnityDebugLogFormat> formats = null)
+            => this.formats = formats?.ToDictionary(format => format.Category, format => format);
 
         /// <summary>
         /// Logs message and exception.
