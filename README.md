@@ -1,1 +1,1 @@
-# Extreal.Core
+# Extreal.Core.Logging
