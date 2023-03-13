@@ -397,6 +397,7 @@ namespace Extreal.Core.Logging.Test
             LogAssert.Expect(LogType.Log, $"<color=#0000FF>[Info:test] dummy</color>");
             LogAssert.Expect(LogType.Log, $"[Info:test1] dummy");
             LogAssert.Expect(LogType.Log, $"<color=#000000>[Info:test2] dummy</color>");
+            LogAssert.Expect(LogType.Log, $"<color=#000000>[Info:test2] dummy</color>\n----------\n{exception}");
 
             var format = new UnityDebugLogFormat("test", Color.blue);
             var format2 = new UnityDebugLogFormat("test2");
@@ -410,6 +411,7 @@ namespace Extreal.Core.Logging.Test
             test.LogInfo("dummy");
             test1.LogInfo("dummy");
             test2.LogInfo("dummy");
+            test2.LogInfo("dummy", exception);
 
             LogAssert.NoUnexpectedReceived();
         }
