@@ -73,13 +73,13 @@ namespace Extreal.Core.Logging
                 .Append(logCategory)
                 .Append("] ")
                 .Append(message);
-            if (exception != null)
-            {
-                _ = stringBuilder.Append("\n----------\n").Append(exception);
-            }
             if (colorRGB != null)
             {
                 stringBuilder.Append("</color>");
+            }
+            if (exception != null)
+            {
+                _ = stringBuilder.Append("\n----------\n").Append(exception);
             }
             return stringBuilder.ToString();
         }
